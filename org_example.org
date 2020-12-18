@@ -1,0 +1,7 @@
+#+select_tags: evil
+
+* Entry 1 :evil:emacs:
+
+* Entry 2 :vim:
+
+* Entry 3 :emacs:  

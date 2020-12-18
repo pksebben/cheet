@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+    </head>
+    <body>
+	{% for cheat in cheats %}
+	<div class="cheat">
+	    <p class="cheat-keybind">{{ cheat.KEYBIND }}</p>
+	    <p class="cheat-action">{{ cheat.ACTION }}</p>
+	    <p class="cheat-context">{{ cheat.CONTEXT }}</p>
+	    <p class="cheat-note">{{ cheat.NOTE }}</p>
+	    <p class="cheat-desc">{{ cheat.DESC }}</p>
+	    <ul class="cheat-tag-list">
+		{% for tag in cheat.TAGS %}
+		<li class="cheat-tag-item">{{ tag }}</li>
+		{% endfor %}
+	    </ul>
+	</div>
+	{% endfor %}
+    </body>
+</html>
