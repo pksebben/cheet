@@ -4,6 +4,14 @@ Make personalized, customized cheat sheets that have only what you want in them.
 
 I got sick of having cheat sheets made by other people.  Not because they were bad in general, but because invariably they had at most five or six things I wanted on them, and about a hundred things I didn't want on them (either because I didn't need them or I had the muscle memory already.)
 
+# Requirements
+
+cheet_compile uses imgkit, which requires you to have wkhtmltopdf installed.  If you're using your own rendering solution you won't need it.
+
+```sh
+sudo apt install wkhtmltopdf
+```
+
 # Usage / Workflow
 
 Each piece of cheet is decoupled such that you should be able to implement custom modules at any stage.  That said, the current workflow looks like this:
