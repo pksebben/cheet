@@ -10,7 +10,7 @@
 
 
 Usage: 
-  cheet.py KEYBIND ACTION CONTEXT [options] [TAGS ...]
+  python3 cheet.py KEYBIND ACTION CONTEXT [options] [TAGS ...]
 
 Arguments:
   KEYBIND     The keybinding to save.
@@ -22,14 +22,16 @@ Options:
   -h --help        Show this screen
   -d DESCRIPTION   Describe what this keybind does, if the action is not descriptive.
   -n NOTE          Notes regarding use, if applicable.
+  -D               Do not compile.  Use this if compiling using non-default settings.
 
 
 """ 
 import json
-import docopt 
+import docopt
 
 def trim_args(args):
     del args["--help"]
+    del args["-D"]
     args["NOTE"] = args.pop("-n")
     args["DESC"] = args.pop("-d")
     return args
