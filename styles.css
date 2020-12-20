@@ -33,7 +33,11 @@ kbd {
 }
 
 .cheat-keybind {
+    position: relative;
+    top: -25px;
+    left: 0px;
     height: 35px;
+    opacity: .75;
     align-content: center;
     background-color: lightskyblue;
     color: darkslategrey;

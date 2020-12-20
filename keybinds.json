@@ -1,1 +1,1 @@
-[{"KEYBIND": "C-x M-d", "ACTION": "insert datetime", "CONTEXT": "emacs", "TAGS": ["asdf", "sdf", "sdf"], "NOTE": "created by me", "DESC": "inserts datetime stamp as MM/DD/YY"}, {"KEYBIND": "C-x M-s", "ACTION": "insert time", "CONTEXT": "emacs", "TAGS": [], "NOTE": null, "DESC": null}]
+{"vi": {"t <char>": {"description": null, "note": null, "tags": ["vi", "vim", "evil"]}}}
