@@ -33,6 +33,9 @@ Cheet compile can use a number of methods for creating a final render of your ch
 ## Chrome Headless
 Requires google-chrome to be on your machine and available in your PATH.  Also requires bash, as google-chrome is invoked using a subprocess.Popen interface
 
+NOTES:
+This is currently broken for anyone other than myself.  
+Also, the docs are aspirational.  Not all the flags work as intended, yet.
 """
 import os
 from jinja2 import Template
@@ -43,28 +46,30 @@ from subprocess import Popen, PIPE
 import shlex
 import subprocess
 
-def compile_cheetsheet(cheetsheet = "keybinds.json", template = "cs_template.html"):
+PROJECT_DIR = "/home/coffee/code/cheet"
+
+def compile_cheetsheet(cheetsheet = "keybinds.json", template = "rendering/cs_template.html"):
     template_html = open(template, "r").read()
     t = Template(template_html)
     return t.render(cheats=json.load(open(cheetsheet, "r")))
 
 def save_cheetsheet(sheet):
-    f = open("cs_final.html", "w")
+    f = open("rendering/cs_final.html", "w")
     f.write(sheet)
     print("saved sheet to cs_final.html")
 
-def render_cheetsheet(sheet = "cs_final.html"):
+def render_cheetsheet(sheet = "rendering/cs_final.html"):
     imgkit.from_file(sheet, "/cheet.jpg")
 
 def chrome_headless_render():
     # TODO: check if google-chrome is on the system, if not throw
-    path = "/home/coffee/code/projects/cheet/cs_final.html"
-    cmd = r"google-chrome --headless --disable-gpu --disable-application-cache --screenshot --window-size=1920,1080 --hide-scrollbars file:///home/coffee/code/projects/cheet/cs_final.html"
-    proc = Popen([cmd], cwd="/home/coffee/code/projects/cheet", stdout=PIPE, stderr=PIPE, shell=True)
+    path = "" + PROJECT_DIR + "/rendering/cs_final.html"
+    cmd = r"google-chrome --headless --disable-gpu --disable-application-cache --screenshot --window-size=1920,1080 --hide-scrollbars file://" + PROJECT_DIR + "/rendering/cs_final.html"
+    proc = Popen([cmd], cwd=PROJECT_DIR, stdout=PIPE, stderr=PIPE, shell=True)
     stdout, stderr = proc.communicate()
     print("should have rendered")
 
-def set_desktop(f = "file:///home/coffee/code/projects/cheet/screenshot.png"):
+def set_desktop(f = "file://" + PROJECT_DIR + "/screenshot.png"):
     # This requires that certain environment variables are set.
     set_envir()
     cmd = "gsettings set org.gnome.desktop.background picture-uri %s" % f
@@ -81,7 +86,7 @@ def set_envir():
 if __name__ == "__main__":
     save_cheetsheet(compile_cheetsheet())
     chrome_headless_render()
-    set_desktop()
+    # set_desktop()
 
 # TODO: imgkit's rendering isn't the best.  What other options are out there?
 # better alternatives may be found here: https://stackoverflow.com/questions/10721884/render-html-to-an-image
