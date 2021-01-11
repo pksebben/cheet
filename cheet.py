@@ -22,6 +22,11 @@ Options:
  prettified, sorted, formatted cheat sheets tailored
  to your specific use.
 
+MODULES
+---------------
+cheet.py          ::  Manage cheet entries
+cheet_compile.py  ::  Compile cheet sheet to output
+
 """ 
 import json
 import docopt

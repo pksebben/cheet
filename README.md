@@ -30,7 +30,7 @@ This outputs to a simple json file ```keybinds.json``` that stores all your chee
 python3 cheet_compile.py
 ```
 
-This (currently) compiles your list of cheets into html using jinja templating.
+This (currently) compiles your list of cheets into html using jinja templating, and renders them using google-chrome in headless mode.
 
 # Roadmap
 

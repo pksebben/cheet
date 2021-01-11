@@ -32,6 +32,7 @@ Cheet compile can use a number of methods for creating a final render of your ch
 
 ## Chrome Headless
 Requires google-chrome to be on your machine and available in your PATH.  Also requires bash, as google-chrome is invoked using a subprocess.Popen interface
+
 """
 import os
 from jinja2 import Template
@@ -59,24 +60,8 @@ def chrome_headless_render():
     # TODO: check if google-chrome is on the system, if not throw
     path = "/home/coffee/code/projects/cheet/cs_final.html"
     cmd = r"google-chrome --headless --disable-gpu --disable-application-cache --screenshot --window-size=1920,1080 --hide-scrollbars file:///home/coffee/code/projects/cheet/cs_final.html"
-    # print("SHLEX-----------------------------------")
-    # print(shlex.split(cmd))
-    # print("END SHLEX -----------------------------------")
-    # chrome_h_args = [
-    #     "/bin/sh",
-    #     "-c",
-    #     "google-chrome",
-    #     "--headless",
-    #     "--disable-gpu",
-    #     "--disable-application-cache",
-    #     "--screenshot",
-    #     "--window-size=1920,1080",
-    #     "--hide-scrollbars",
-    #     "file:///%s" % path
-    # ]
     proc = Popen([cmd], cwd="/home/coffee/code/projects/cheet", stdout=PIPE, stderr=PIPE, shell=True)
     stdout, stderr = proc.communicate()
-    # subprocess.run(shlex.split(cmd), capture_output=True, env=os.environ, check=True, shell=True)
     print("should have rendered")
 
 def set_desktop(f = "file:///home/coffee/code/projects/cheet/screenshot.png"):
