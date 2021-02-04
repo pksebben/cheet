@@ -3,9 +3,7 @@
 Cheet Compile will take a list of keybinds and compile it down to html, optionally rendering it to jpeg so it can be used where images are used.
 
 Usage:
-  python3 cheet_compile.py [-i INPUT] [-o OUTPUT] [-t TEMPLATE] [-r RENDERER]
-
-Arguments:
+  cheet_compile.py [-i INPUT] [-o OUTPUT] [-t TEMPLATE] [-r RENDERER="chrome"]
 
 Options:
   -i --input INPUT         The json list of keybinds to compile [default: "keybinds.json"]
@@ -49,8 +47,11 @@ import subprocess
 PROJECT_DIR = "/home/coffee/code/cheet"
 
 def compile_cheetsheet(cheetsheet = "keybinds.json", template = "rendering/cs_template.html"):
+    "Plug cheets into the template and render HTML using jinja."
+
     template_html = open(template, "r").read()
     t = Template(template_html)
+    cheats = json.load(open(cheetsheet, "r"))
     return t.render(cheats=json.load(open(cheetsheet, "r")))
 
 def save_cheetsheet(sheet):
@@ -58,8 +59,12 @@ def save_cheetsheet(sheet):
     f.write(sheet)
     print("saved sheet to cs_final.html")
 
-def render_cheetsheet(sheet = "rendering/cs_final.html"):
+def imgkit_render(sheet = "rendering/cs_final.html"):
+    "Render using imgkit."
+    # TODO: complete and test.
+    
     imgkit.from_file(sheet, "/cheet.jpg")
+    print("rendered cheet.jpg using imgkit")
 
 def chrome_headless_render():
     # TODO: check if google-chrome is on the system, if not throw
@@ -84,8 +89,11 @@ def set_envir():
 
     
 if __name__ == "__main__":
+    args = docopt.docopt(__doc__, version="Cheet compile 0.1")
+
     save_cheetsheet(compile_cheetsheet())
     chrome_headless_render()
+        
     # set_desktop()
 
 # TODO: imgkit's rendering isn't the best.  What other options are out there?

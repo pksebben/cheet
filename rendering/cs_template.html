@@ -7,20 +7,24 @@
     <body>
 	<div class="sheet-page-container">
 	    {% for cheat in cheats %}
-	    <div class="cheat">
-		<kbd class="cheat-keybind">{{ cheat.KEYBIND }}</kbd>
-		<p class="cheat-action">{{ cheat.ACTION }}</p>
-		<p class="cheat-context">{{ cheat.CONTEXT }}</p>
-		<p class="cheat-note">{{ cheat.NOTE }}</p>
-		<p class="cheat-desc">{{ cheat.DESC }}</p>
-		<ul class="cheat-tag-list">
-		    <li class="cheat-tag-item">TAGS:</li>
-		    {% for tag in cheat.TAGS %}
-		    <li class="cheat-tag-item">{{ tag }}</li>
+	    <div class="cheet-container">
+		<div class="cheet-header-container">
+		    <p class="cheet-title">{{ cheat.name }}</p>
+		    <kbd class="cheet-kb">{{ cheat.key }}</kbd>
+		</div>
+		<div class="cheet-context-container">
+		    <p class="cheet-desc">{{ cheat.description }}</p>
+		</div>
+		<p class="cheet-context">{{ cheat.context }}</p>
+		<p class="cheet-note">{{ cheat.note }}</p>
+		<ul class="cheet-tag-list">
+		    {% for tag in cheat.tags %}
+		    <li class="cheet-tag-item">{{ tag }}</li>
 		    {% endfor %}
 		</ul>
 	    </div>
 	    {% endfor %}
+
 	</div>
     </body>
 </html>

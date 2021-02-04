@@ -32,34 +32,56 @@ import json
 import docopt
 
 def extract_kb(args):
-    name = args['KEYBIND']
     kb = {
+        'name' : args['ACTION'],
+        'key' : args['KEYBIND'],
         'description': args['-d'],
         'note' : args['-n'],
         'tags' : args['TAGS'],
+        'context' : args['CONTEXT']
     }
-    context = args['CONTEXT']
-    return (context, name, kb)
+    return kb
 
 def add_to_store(store, kb):
-    if kb[0] not in store:
-        store[kb[0]] = {}
-    if kb[1] in store[kb[0]]:
-        ow = input("%s exists in context %s. overwrite? (y/n):" % (kb[1], kb[0]))
-        while ow not in ("Y","y","N","n"):
-            print("bad input. please input Y, y, N or n.")
-            ow = input("%s exists in context %s. overwrite? (y/n):" % (kb[1], kb[0]))
-        if ow in ("y" , "Y"):
-            store[kb[0]][kb[1]] = kb[2]
-            print("stored: %s \nin context: %s" % (kb[1], kb[0]))
+    """this is a crap way to store data.  Makes it hard to use later."""
+    for item in store:
+        if item['context'] == kb['context'] and item['name'] == kb['name']:
+            ow = input("%s exists in context %s. overwrite? (y/n):" % (kb['name'], kb['context']))
+            while ow not in ("Y","y","N","n"):
+                print("bad input. please input Y, y, N or n.")
+                ow = input("%s exists in context %s. overwrite? (y/n):" % (kb['name'], kb['context']))
+                if ow in ("y" , "Y"):
+                    store.remove(item) # TODO: this is prolly wrong
+                    store.append(kb)
+                    print("stored: %s \nin context: %s" % (kb[1], kb[0]))
     else:
-        store[kb[0]][kb[1]] = kb[2]
-        print("stored: %s \nin context: %s" % (kb[1], kb[0]))
+        store.append(kb)
+        print("stored: %s \nin context: %s" % (kb['name'], kb['context']))
+
+
+    # if kb[0] not in store:
+
+    #     store[kb[0]] = {}
+    # if kb[1] in store[kb[0]]:
+    #     ow = input("%s exists in context %s. overwrite? (y/n):" % (kb[1], kb[0]))
+    #     while ow not in ("Y","y","N","n"):
+    #         print("bad input. please input Y, y, N or n.")
+    #         ow = input("%s exists in context %s. overwrite? (y/n):" % (kb[1], kb[0]))
+    #     if ow in ("y" , "Y"):
+            
+    #         print("stored: %s \nin context: %s" % (kb[1], kb[0]))
+    # else:
+    #     store[kb[0]][kb[1]] = kb[2]
+    #     print("stored: %s \nin context: %s" % (kb[1], kb[0]))
 
 def main():
     args = docopt.docopt(__doc__, version="Cheet 0.1")
     keybind = extract_kb(args)
-    keybind_list = json.load(open("keybinds.json", "r"))
+    try:
+        keybind_list = json.load(open("keybinds.json", "r"))
+    except FileNotFoundError:
+        print("No keybinds.json found.  Initializing fresh keybinds.json")
+        keybind_list = [] 
     add_to_store(keybind_list, keybind)
     json.dump(keybind_list, open("keybinds.json", "w"))
     return 1
