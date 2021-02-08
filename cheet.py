@@ -24,6 +24,43 @@ Options:
  prettified, sorted, formatted cheat sheets tailored
  to your specific use.
 
+ Creating cheat sheets
+
+ Cheet creates a file 'keybinds.json' that represents a dict of 
+ keybind information like context, keystroke, name, and description
+ and then processes that file into a jinja template, finally rendering
+ using a tool like google-chrome-headless.  It was designed to isolate
+ each step of the process such that it should be trivial for anyone 
+ with the intent to hack on it and change some or another component
+ without affecting the way the rest of it works.  For example, if 
+ the provided cli is not to your liking, simply make sure that your
+ custom implementation creates a json with the same fieldnames
+ and the compilation and rendering steps should work as intended.
+ Alternatively, if the output isn't to your taste you could modify 
+ the html / css to your preference, or pick another way to display the 
+ data, and the design is hopefully such that none of the other bits 
+ of the program should get in your way.
+
+ The Cheet cli
+
+ Cheet's default cli offers two options for creating cheets.  You may 
+ invoke it straight from the shell, passing in the options defined in 
+ this docstring, or you may start it without arguments to access the 
+ interactive cli.  From there, the prompts should guide you through 
+ creation, deletion, editing, and management of your cheat sheet.
+ 
+ Compilation / Rendering
+
+ Both of the rendering engines have external dependancies as of this
+ writing.  There's chrome headless, which requires you to have google 
+ chrome installed and accessible via your system's PATH, and there's imgkit,
+ which depends on a wkhtmltopdf installation (available via apt on debian
+ systems).  NOTE: at the moment, only chrome-headless works.  
+
+ That said, you may choose to compile without rendering.  The default 
+ mode of Cheet outputs a file 'cs_final.html' that should be viewable 
+ in-browser or by any other method you choose to view webpages.
+
 MODULES
 ---------------
 cheet.py          ::  Manage cheet entries
