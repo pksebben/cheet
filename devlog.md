@@ -20,3 +20,10 @@ Output to qwerty overlay?
 inkscape??
 
 rust ((resvg, piet))
+
+
+# TODO
+
+:: I want jinja to escape things that look like html tags.
+:: Also, jinja is currently displaying "None" when there are no tags.  This is not preferred.
+:: Chrome-headless isn't rendering the bg for desc properly

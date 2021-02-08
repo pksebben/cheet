@@ -29,7 +29,12 @@ Cheet Compile takes a list of keybinds in json.  INPUT is a string representing 
 Cheet compile can use a number of methods for creating a final render of your cheet sheet.
 
 ## Chrome Headless
+dependancies: google chrome
 Requires google-chrome to be on your machine and available in your PATH.  Also requires bash, as google-chrome is invoked using a subprocess.Popen interface
+
+## IMGKit
+dependancies: wkhtmltopdf
+imgkit is a python binding for wkhtmltopdf (installation / dependancies available here: https://pypi.org/project/imgkit/)
 
 NOTES:
 This is currently broken for anyone other than myself.  
@@ -62,14 +67,17 @@ def save_cheetsheet(sheet):
 def imgkit_render(sheet = "rendering/cs_final.html"):
     "Render using imgkit."
     # TODO: complete and test.
+
+    f = open("rendering/cs_final.html", "r")
     
-    imgkit.from_file(sheet, "/cheet.jpg")
+    imgkit.from_file(f, "~/cheet.jpg")
     print("rendered cheet.jpg using imgkit")
 
 def chrome_headless_render():
     # TODO: check if google-chrome is on the system, if not throw
     path = "" + PROJECT_DIR + "/rendering/cs_final.html"
-    cmd = r"google-chrome --headless --disable-gpu --disable-application-cache --screenshot --window-size=1920,1080 --hide-scrollbars file://" + PROJECT_DIR + "/rendering/cs_final.html"
+    # cmd = r"google-chrome --headless --disable-gpu --disable-application-cache --screenshot --window-size=1920,1080 --hide-scrollbars file://" + PROJECT_DIR + "/rendering/cs_final.html"
+    cmd = r"google-chrome --headless --disable-application-cache --font-render-hinting=medium --screenshot --window-size=1920,1080 --hide-scrollbars file://" + PROJECT_DIR + "/rendering/cs_final.html"
     proc = Popen([cmd], cwd=PROJECT_DIR, stdout=PIPE, stderr=PIPE, shell=True)
     stdout, stderr = proc.communicate()
     print("should have rendered")
@@ -93,6 +101,7 @@ if __name__ == "__main__":
 
     save_cheetsheet(compile_cheetsheet())
     chrome_headless_render()
+
         
     # set_desktop()
 

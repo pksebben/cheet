@@ -10,17 +10,26 @@
 	    <div class="cheet-container">
 		<div class="cheet-header-container">
 		    <p class="cheet-title">{{ cheat.name }}</p>
+		    <p class="cheet-context">{{ cheat.context }}</p>
 		    <kbd class="cheet-kb">{{ cheat.key }}</kbd>
 		</div>
-		<div class="cheet-context-container">
+		<div class="cheet-desc-container">
 		    <p class="cheet-desc">{{ cheat.description }}</p>
 		</div>
-		<p class="cheet-context">{{ cheat.context }}</p>
-		<p class="cheet-note">{{ cheat.note }}</p>
+		<p class="cheet-note">
+		    {% if cheat.note %}
+		    {{ cheat.note }}
+		    {% else %}
+		    No notes.
+		    {% endif %}
+		</p>
 		<ul class="cheet-tag-list">
+		    <lh class="cheet-tag-list-header">Tags:</lh>
+		    {% if cheat.tags %}
 		    {% for tag in cheat.tags %}
 		    <li class="cheet-tag-item">{{ tag }}</li>
 		    {% endfor %}
+		    {% endif %}
 		</ul>
 	    </div>
 	    {% endfor %}
