@@ -21,6 +21,9 @@ inkscape??
 
 rust ((resvg, piet))
 
+# FIXME
+
+Inputting a command with a trailing space crashes.  This is not preferable behavior (encountered when entering fields in 'vi' mode)
 
 # TODO
 
