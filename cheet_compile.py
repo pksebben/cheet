@@ -49,7 +49,8 @@ from subprocess import Popen, PIPE
 import shlex
 import subprocess
 
-PROJECT_DIR = "/home/coffee/code/cheet"
+# Set me to the working dir for cheet
+PROJECT_DIR = "/home/coffee/tools/cheet"
 
 def compile_cheetsheet(cheetsheet = "keybinds.json", template = "rendering/cs_template.html"):
     "Plug cheets into the template and render HTML using jinja."
