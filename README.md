@@ -6,11 +6,9 @@ I got sick of having cheat sheets made by other people.  Not because they were b
 
 # Requirements
 
-cheet_compile uses imgkit, which requires you to have wkhtmltopdf installed.  If you're using your own rendering solution you won't need it.
+Cheet_compile uses headless chrome to render sheets, which should be available if you have chrome installed.
 
-```sh
-sudo apt install wkhtmltopdf
-```
+After pulling the repo and creating a venv, you must `pip install -r requirements.txt`
 
 # Usage / Workflow
 
