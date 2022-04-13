@@ -71,6 +71,7 @@ import json
 import docopt
 
 import cheet_compile
+import models
 
 
 def extract_kb(args):
@@ -104,6 +105,7 @@ def add_to_store(store, kb):
       
 
 def prompt_input(options, prompt=None):
+    """takes a set of options and ensures that input is one of them."""
     if prompt:
         print(prompt)
     cmd = input("\n" + str(options) + ":")
@@ -116,7 +118,9 @@ def prompt_input(options, prompt=None):
 def validate(_input):
     pass
 
+# TODO: this implementation sucks.  We should be using ncurses or something of that nature
 def clear_output():
+    """print a bunch of newlines so it looks like a fresh screen"""
     for i in range(15):
         print('\n')
     
@@ -172,7 +176,8 @@ def add_new_kb():
     return edit_kb(kb)
 
 
-def edit_kb(kb):
+def edit_kb(kb: dict):
+    """loop that allows editing a keybinding in-place and returns it if the entry is 'q'"""
     options = list(kb.keys())
     options.append('q')
     while True: 
@@ -195,8 +200,32 @@ def edit_kb(kb):
                 else:
                     kb[cmd].append(entry)
 
+def edit_cheet(cheet: models.Cheet):
+    """loop for editing cheets interactively"""
+    options = list(cheet.as_dict().keys())
+    options.append('q')
+    while True:
+        clear_output()
+        print("\nedit your keybinding here. Which field would you like to edit? Enter q to save changes and exit.")
+        repr(cheet)
+        cmd = prompt_input(options)
+        if cmd in cheet.as_dict().keys():
+            try:
+                cheet.edit()
+            except MissingFieldException:
+                print("\nI didn't recognize that field.  Which field would you like to edit?")
+        else:
+            print()
+            
+            
     
-def save_kb_list(kb_list):
+def save_kb_list(kb_list: list):
+    print(f"""
+---------------
+saving kb_list.
+kb_list type: {type(kb_list)}
+kb type: {type(kb_list[0])}
+""")
     json.dump(kb_list, open("keybinds.json", "w"))
     save_and_compile()
         
@@ -216,7 +245,6 @@ def list_kb(store):
 
 def save_and_compile():
     cheet_compile.compile_cheetsheet()
-    cheet_compile.save_cheetsheet(cheet_compile.compile_cheetsheet())
     cheet_compile.chrome_headless_render()
 
 def parse_input():
@@ -240,7 +268,6 @@ def main():
 
     json.dump(keybind_list, open("keybinds.json", "w"))
     cheet_compile.compile_cheetsheet()
-    cheet_compile.save_cheetsheet(cheet_compile.compile_cheetsheet())
     cheet_compile.chrome_headless_render()
     return 1
 

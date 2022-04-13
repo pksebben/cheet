@@ -41,7 +41,7 @@ This is currently broken for anyone other than myself.
 Also, the docs are aspirational.  Not all the flags work as intended, yet.
 """
 import os
-from jinja2 import Template
+import jinja2
 import json
 import imgkit
 import docopt
@@ -52,18 +52,16 @@ import subprocess
 # Set me to the working dir for cheet
 PROJECT_DIR = "/home/coffee/tools/cheet"
 
-def compile_cheetsheet(cheetsheet = "keybinds.json", template = "rendering/cs_template.html"):
+def compile_cheetsheet(cheetsheet = "keybinds.json", template = "rendering/cs_template.html", savefile = "rendering/cs_final.html"):
     "Plug cheets into the template and render HTML using jinja."
 
     template_html = open(template, "r").read()
-    t = Template(template_html)
+    template = jinja2.Template(template_html)
     cheats = json.load(open(cheetsheet, "r"))
-    return t.render(cheats=json.load(open(cheetsheet, "r")))
-
-def save_cheetsheet(sheet):
-    f = open("rendering/cs_final.html", "w")
-    f.write(sheet)
-    print("saved sheet to cs_final.html")
+    cheetsheet = template.render(cheats=json.load(open(cheetsheet, "r")))
+    f = open(savefile, "w")
+    f.write(cheetsheet)
+    print(f"saved sheet to {savefile}")
 
 def imgkit_render(sheet = "rendering/cs_final.html"):
     "Render using imgkit."
@@ -77,7 +75,6 @@ def imgkit_render(sheet = "rendering/cs_final.html"):
 def chrome_headless_render():
     # TODO: check if google-chrome is on the system, if not throw
     path = "" + PROJECT_DIR + "/rendering/cs_final.html"
-    # cmd = r"google-chrome --headless --disable-gpu --disable-application-cache --screenshot --window-size=1920,1080 --hide-scrollbars file://" + PROJECT_DIR + "/rendering/cs_final.html"
     cmd = r"google-chrome --headless --disable-application-cache --font-render-hinting=medium --screenshot --window-size=1920,1080 --hide-scrollbars file://" + PROJECT_DIR + "/rendering/cs_final.html"
     proc = Popen([cmd], cwd=PROJECT_DIR, stdout=PIPE, stderr=PIPE, shell=True)
     stdout, stderr = proc.communicate()
@@ -100,7 +97,7 @@ def set_envir():
 if __name__ == "__main__":
     args = docopt.docopt(__doc__, version="Cheet compile 0.1")
 
-    save_cheetsheet(compile_cheetsheet())
+    compile_cheetsheet()
     chrome_headless_render()
 
         
