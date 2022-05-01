@@ -1,5 +1,5 @@
 """
-Usage: 
+Usage:
   cheet.py KEYBIND ACTION CONTEXT [-d DESCRIPTION] [-n NOTE] [TAGS ...]
   cheet.py rm KEYBIND
   cheet.py ls
@@ -66,7 +66,7 @@ MODULES
 cheet.py          ::  Manage cheet entries
 cheet_compile.py  ::  Compile cheet sheet to output
 
-""" 
+"""
 import json
 import docopt
 
@@ -79,7 +79,7 @@ def extract_kb(args):
         'key' : args['KEYBIND'],
         'description': args['-d'] if args['-d'] else None,
         'note' : args['-n'] if args['-n'] else "No notes",
-        'tags' : args['TAGS'] if args['TAGS'] else None, 
+        'tags' : args['TAGS'] if args['TAGS'] else None,
         'context' : args['CONTEXT']
     }
     return kb
@@ -101,7 +101,7 @@ def add_to_store(store, kb):
         store.append(kb)
         print("stored: %s \nin context: %s" % (kb['name'], kb['context']))
 
-      
+
 
 def prompt_input(options, prompt=None):
     if prompt:
@@ -175,7 +175,7 @@ def add_new_kb():
 def edit_kb(kb):
     options = list(kb.keys())
     options.append('q')
-    while True: 
+    while True:
         clear_output()
         print("\nedit your keybinding here. Which field would you like to edit? Enter q to save changes and exit.")
         list_verbose(kb)
