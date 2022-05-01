@@ -20,7 +20,7 @@ Each piece of cheet is decoupled such that you should be able to implement custo
 python3 cheet.py <keybinding> <action> <context> [-d <description>] [-n <note>] [<tags> ...]
 ```
 
-This outputs to a simple json file ```keybinds.json``` that stores all your cheets for you.
+This outputs to a simple json file ```cheet-keybinds.json``` that stores all your cheets for you.
 
 ## 2. Compile to output
 
