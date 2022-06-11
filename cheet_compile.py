@@ -43,14 +43,28 @@ Also, the docs are aspirational.  Not all the flags work as intended, yet.
 import os
 from jinja2 import Template
 import json
-import imgkit
-import docopt
 from subprocess import Popen, PIPE
 import shlex
 import subprocess
+from tkinterhtml import HtmlFrame
+import tkinter as tk
+import platform
+import random
 
-# Set me to the working dir for cheet
-PROJECT_DIR = "/home/coffee/tools/cheet"
+
+
+# Set facts
+PROJECT_DIR = os.getcwd()
+root = tk.Tk()
+SCREEN_WIDTH = root.winfo_screenwidth()
+SCREEN_HEIGHT = root.winfo_screenheight()
+OS = platform.system()
+SHOTNAME = "screenshot.png"
+
+if OS == "Darwin":
+    CHROME_BINARY = "/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+elif OS == "Linux":
+    CHROME_BINARY = "/usr/bin/google-chrome"
 
 def compile_cheetsheet(cheetsheet = "keybinds.json", template = "rendering/cs_template.html"):
     "Plug cheets into the template and render HTML using jinja."
@@ -65,30 +79,53 @@ def save_cheetsheet(sheet):
     f.write(sheet)
     print("saved sheet to cs_final.html")
 
-def imgkit_render(sheet = "rendering/cs_final.html"):
-    "Render using imgkit."
-    # TODO: complete and test.
+def tkinter_render(cheetfile_path):
+    root = tk.Tk()
+    frame = HtmlFrame(root, horizontal_scrollbar="auto")
+    frame.load_file(cheetfile_path)
 
-    f = open("rendering/cs_final.html", "r")
-    
-    imgkit.from_file(f, "~/cheet.jpg")
-    print("rendered cheet.jpg using imgkit")
+def firefox_headless_render():
+    raise NotImplementedError
 
 def chrome_headless_render():
     # TODO: check if google-chrome is on the system, if not throw
-    path = "" + PROJECT_DIR + "/rendering/cs_final.html"
-    # cmd = r"google-chrome --headless --disable-gpu --disable-application-cache --screenshot --window-size=1920,1080 --hide-scrollbars file://" + PROJECT_DIR + "/rendering/cs_final.html"
-    cmd = r"google-chrome --headless --disable-application-cache --font-render-hinting=medium --screenshot --window-size=1920,1080 --hide-scrollbars file://" + PROJECT_DIR + "/rendering/cs_final.html"
-    proc = Popen([cmd], cwd=PROJECT_DIR, stdout=PIPE, stderr=PIPE, shell=True)
+    path = PROJECT_DIR + "/rendering/cs_final.html"
+    cmd = [
+        CHROME_BINARY,
+        "--headless",
+        "--disable-application-cache",
+        "--font-render-hinting=medium",
+        "--screenshot",
+        "--window-size=" +str(SCREEN_WIDTH) + "," + str(SCREEN_HEIGHT),
+        "--hide-scrollbars",
+        "file://" + PROJECT_DIR + "/rendering/cs_final.html"
+    ]
+    print("rendering with chrome headless.")
+    print(cmd)
+    proc = Popen([" ".join(cmd)], cwd=PROJECT_DIR, stdout=PIPE, stderr=PIPE, shell=True)
     stdout, stderr = proc.communicate()
     print("should have rendered")
 
-def set_desktop(f = "file://" + PROJECT_DIR + "/screenshot.png"):
-    # This requires that certain environment variables are set.
-    set_envir()
-    cmd = "gsettings set org.gnome.desktop.background picture-uri %s" % f
-    process = Popen(["/bin/sh", "-c", cmd], stdout=PIPE, stderr=PIPE)
-    stdout, stderr = process.communicate()
+def set_desktop(f = PROJECT_DIR + "/rendering/" + "screenshot.png"):
+    if OS == "Linux":
+        # This requires that certain environment variables are set.
+        set_envir()
+        cmd = "gsettings set org.gnome.desktop.background picture-uri %s" % f
+        process = Popen(["/bin/sh", "-c", cmd], stdout=PIPE, stderr=PIPE)
+        stdout, stderr = process.communicate()
+        print("set linux desktop to file")
+    if OS == "Darwin":
+        # TODO: macos caches the filename, and won't set it if it's
+        # the same as the last filename.  Should rotate filenames.
+        cmd = "osascript -e 'tell application \"Finder\" to set desktop picture to POSIX file \"%s\"'" % PROJECT_DIR + "/rendering/lolrus.webp"
+        cmd = "osascript -e 'tell application \"Finder\" to set desktop picture to POSIX file \"%s\"'" % f
+        print("setting desktop...")
+        print("cmd = " + cmd)
+        process = Popen(["/bin/sh", "-c", cmd], stdout=PIPE, stderr=PIPE)
+        stdout, stderr = process.communicate()
+        print(stderr)
+        print("set macos desktop")
+
 
 def set_envir():
     pid = subprocess.check_output(["pgrep", "gnome-session"]).decode("utf-8").strip().split("\n")[0]

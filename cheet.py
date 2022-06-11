@@ -1,76 +1,7 @@
-"""
-Usage: 
-  cheet.py KEYBIND ACTION CONTEXT [-d DESCRIPTION] [-n NOTE] [TAGS ...]
-  cheet.py rm KEYBIND
-  cheet.py ls
-  cheet.py
 
-Arguments:
-  KEYBIND     The keybinding to save.
-  ACTION      What the binding accomplishes.
-  CONTEXT     Where this binding works e.g. vim, emacs, evil-mode, etc.
-  TAGS        Extra tags to add to the entry, for organization and notation.
-
-Options:
-  -h --help        Show this screen
-  -d DESCRIPTION   Describe what this keybind does, if the action is not descriptive.
-  -n NOTE          Notes regarding use, if applicable.
-
- Cheet is a simplified interface for creating cheat sheets
- in a modular fashion.  It is designed to be extensible
- and minimally invasive to your time and attention.
- Cheet.py creates a keybinding and saves it in keybinds.json.
- Other parts of this package use that data to compile
- prettified, sorted, formatted cheat sheets tailored
- to your specific use.
-
- Creating cheat sheets
-
- Cheet creates a file 'keybinds.json' that represents a dict of 
- keybind information like context, keystroke, name, and description
- and then processes that file into a jinja template, finally rendering
- using a tool like google-chrome-headless.  It was designed to isolate
- each step of the process such that it should be trivial for anyone 
- with the intent to hack on it and change some or another component
- without affecting the way the rest of it works.  For example, if 
- the provided cli is not to your liking, simply make sure that your
- custom implementation creates a json with the same fieldnames
- and the compilation and rendering steps should work as intended.
- Alternatively, if the output isn't to your taste you could modify 
- the html / css to your preference, or pick another way to display the 
- data, and the design is hopefully such that none of the other bits 
- of the program should get in your way.
-
- The Cheet cli
-
- Cheet's default cli offers two options for creating cheets.  You may 
- invoke it straight from the shell, passing in the options defined in 
- this docstring, or you may start it without arguments to access the 
- interactive cli.  From there, the prompts should guide you through 
- creation, deletion, editing, and management of your cheat sheet.
- 
- Compilation / Rendering
-
- Both of the rendering engines have external dependancies as of this
- writing.  There's chrome headless, which requires you to have google 
- chrome installed and accessible via your system's PATH, and there's imgkit,
- which depends on a wkhtmltopdf installation (available via apt on debian
- systems).  NOTE: at the moment, only chrome-headless works.  
-
- That said, you may choose to compile without rendering.  The default 
- mode of Cheet outputs a file 'cs_final.html' that should be viewable 
- in-browser or by any other method you choose to view webpages.
-
-MODULES
----------------
-cheet.py          ::  Manage cheet entries
-cheet_compile.py  ::  Compile cheet sheet to output
-
-""" 
 import json
-import docopt
-
 import cheet_compile
+import random
 
 
 def extract_kb(args):
@@ -120,10 +51,9 @@ def clear_output():
     for i in range(15):
         print('\n')
     
-def loop():
-    kb_list = json.load(open("keybinds.json", "r"))
+def loop(kb_list):
     prompt = "\nyou may manage your keybind store here.\n\nls to list keybindings\nrm <INDEX> to remove a keybinding \ncat <INDEX> to print a verbose definition of a keybinding \nvi <INDEX> to edit a keybinding \n"
-    options = ['ls', 'rm', 'vi', 'cat', 'q', 'Q', 'h', 'help']
+    options = ['ls', 'rm', 'vi', 'cat', 'q', 'Q', 'h', 'help', 'test']
     command = None
     print (prompt)
 
@@ -140,6 +70,17 @@ def loop():
             save_and_compile()
         elif command in ['h','help']:
             print(prompt)
+        elif command in "test":
+            test_kb = {
+                'name': 'test-kb-' + str(random.randrange(1000)) ,
+                'key': 't',
+                'description': '',
+                'note': '',
+                'tags' : [],
+                'context': 'testing'
+            }
+            kb_list.append(test_kb)
+            save_kb_list(kb_list)
         else:
             try:
                 (command, index) = command.split(" ")
@@ -218,25 +159,27 @@ def save_and_compile():
     cheet_compile.compile_cheetsheet()
     cheet_compile.save_cheetsheet(cheet_compile.compile_cheetsheet())
     cheet_compile.chrome_headless_render()
+    cheet_compile.set_desktop()
 
 def parse_input():
     pass
 
-def main():
-    # TODO: split up into functions // flesh out more of the cli
-    # TODO: See if you can boil this down to a single input cmd in the loop.
-    args = docopt.docopt(__doc__, version="Cheet 0.1")
-    
-    keybind = extract_kb(args)
+def kb_list():
     try:
         keybind_list = json.load(open("keybinds.json", "r"))
     except FileNotFoundError:
         print("No keybinds.json found.  Initializing fresh keybinds.json")
         keybind_list = [] 
-    if args['KEYBIND']:
-        add_to_store(keybind_list, keybind)
-    else:
-        loop()
+    return keybind_list
+
+    
+
+def main():
+    # TODO: split up into functions // flesh out more of the cli
+    # TODO: See if you can boil this down to a single input cmd in the loop.
+    
+    keybind_list = kb_list()
+    loop(keybind_list)
 
     json.dump(keybind_list, open("keybinds.json", "w"))
     cheet_compile.compile_cheetsheet()
