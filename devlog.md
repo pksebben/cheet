@@ -4,12 +4,6 @@ How are we going to implement?
 
 Pandoc
 
-Let's look at doing this in org-mode!
-
-C-h : help
-C-h d : search in documentation
-
-
 python to svg / raster / pdf
 
 drawing libs / simple text rendering.
@@ -25,10 +19,18 @@ rust ((resvg, piet))
 
 Inputting a command with a trailing space crashes.  This is not preferable behavior (encountered when entering fields in 'vi' mode)
 
+# LOG 
+
+## Saturday, June 11, 2022
+
+BOOKMARK: ,./
+
 # TODO
 
-:: I want jinja to escape things that look like html tags.
-:: Also, jinja is currently displaying "None" when there are no tags.  This is not preferred.
-:: Chrome-headless isn't rendering the bg for desc properly
-:: Fix input behavior when adding < >. (these don't display due to html renders)
-:: We need better editing behavior than "nuke and pave". Editing fields makes you write the whole thing from scratch.
+[ ] implement the new vim editing behavior
+[ ] implement EventSource
+[ ] browser display
+[ ] absolute pathing to screenshot output
+[ ] global config object
+[ ] directory structure / modularization
+[ ] data sources / apropos => cheets
