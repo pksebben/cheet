@@ -2,31 +2,31 @@
 
 <html>
     <head>
-      <link rel="stylesheet" href="styles.css">
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/basic.css')}}">
     </head>
     <body>
 	<div class="sheet-page-container">
-	    {% for cheat in cheats %}
+	    {% for cheet in cheets %}
 	    <div class="cheet-container">
 		<div class="cheet-header-container">
-		    <p class="cheet-title">{{ cheat.name }}</p>
-		    <p class="cheet-context">{{ cheat.context }}</p>
-		    <kbd class="cheet-kb">{{ cheat.key }}</kbd>
+		    <p class="cheet-title">{{ cheet.name }}</p>
+		    <p class="cheet-context">{{ cheet.context }}</p>
+		    <kbd class="cheet-kb">{{ cheet.key }}</kbd>
 		</div>
 		<div class="cheet-desc-container">
-		    <p class="cheet-desc">{{ cheat.description }}</p>
+		    <p class="cheet-desc">{{ cheet.description }}</p>
 		</div>
 		<p class="cheet-note">
-		    {% if cheat.note %}
-		    {{ cheat.note }}
+		    {% if cheet.note %}
+		    {{ cheet.note }}
 		    {% else %}
 		    No notes.
 		    {% endif %}
 		</p>
 		<ul class="cheet-tag-list">
 		    <lh class="cheet-tag-list-header">Tags:</lh>
-		    {% if cheat.tags %}
-		    {% for tag in cheat.tags %}
+		    {% if cheet.tags %}
+		    {% for tag in cheet.tags %}
 		    <li class="cheet-tag-item">{{ tag }}</li>
 		    {% endfor %}
 		    {% endif %}

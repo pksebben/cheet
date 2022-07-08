@@ -6,18 +6,18 @@ import yaml
 
 args = sys.argv
 
-class Cheet: 
+class Cheet:
     name = "test cheet"
     key = "k"
     context = "no context"
-    description = None 
-    note = "None" 
-    tags = None  
+    description = None
+    note = "None"
+    tags = None
 
     def edit(self, cheet = None):
         """edit this cheet using a vim subprocess"""
         # TODO: accept cheet and return it as json?
-        # TODO: cheet validation 
+        # TODO: cheet validation
         cheet_template ="""Edit your cheet here. Ensure you do not mangle the format.
 name: %s
 key: %s

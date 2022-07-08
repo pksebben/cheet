@@ -1,33 +1,41 @@
 # from https://maxhalford.github.io/blog/flask-sse-no-deps/
 import flask
+from flask import render_template
+from core.cheet import Cheet
+from core.manager import CheetManager
 import queue
 
 app = flask.Flask(__name__)
 
-class CheetDisplay:
+cm = CheetManager()
+cm.test_populate()
+cm.select_all()
 
-    def __init__(self, template = "basic.j2"):
-        self.master_cheetlist = []
-        self.current_cheets = []
-        self.template = template
+# class CheetDisplay:
+#     """renders cheets into templates and returns html"""
 
-    def render_cheetsheet():
-        rendered = flask.render_template(self.template, self.cheetlist)
-        return rendered
+#     def __init__(self, template = "basic.j2"):
+#         self.master_cheetlist = []
+#         self.current_cheets = []
+#         self.template = template
 
-    def by_tag(self, tag):
-        self.current_cheets = []
-        for cheet in self.master_cheetlist:
-            if tag in cheet['tags']:
-                self.current_cheets.append(cheet)
-        return self.render_cheetsheet()
+#     def render_cheetsheet():
+#         rendered = flask.render_template(self.template, self.cheetlist)
+#         return rendered
 
-    def by_context(self, context):
-        self.current_cheets = []
-        for cheet in self.master_cheetlist:
-            if cheet.context == context:
-                self.current_cheets.append(cheet)
-        return self.render_cheetsheet()
+#     def by_tag(self, tag):
+#         self.current_cheets = []
+#         for cheet in self.master_cheetlist:
+#             if tag in cheet['tags']:
+#                 self.current_cheets.append(cheet)
+#         return self.render_cheetsheet()
+
+#     def by_context(self, context):
+#         self.current_cheets = []
+#         for cheet in self.master_cheetlist:
+#             if cheet.context == context:
+#                 self.current_cheets.append(cheet)
+#         return self.render_cheetsheet()
 
 
 
@@ -53,7 +61,9 @@ announcer = MessageAnnouncer()
 
 @app.route('/')
 def home():
-    return 'make me a website, he said!'
+
+    page = render_template("basic.j2", cheets = cm.selected_cheets)
+    return page
 
 @app.route('/ping')
 def ping():
@@ -96,4 +106,4 @@ def format_sse(data: str, event=None):
     return msg
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
