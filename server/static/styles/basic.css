@@ -1,4 +1,3 @@
-
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -8,8 +7,8 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     margin: 0;
@@ -20,7 +19,7 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
+article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
     display: block;
 }
@@ -85,36 +84,35 @@ time, mark, audio, video {
     --box-color: rgba(108,91,123,75%);
 }
 .sheet-page-container {
-    overflow: hidden;
-    width: 1920px;
-    height: 1080px;
-    background-color: black;
-    font-family: fira code retina;
-    font-size: .9em;
-
-    background-image: url("bg.jpg");
-    margin: 0px;
-    padding: 50px;
-    border: 0px;
-    display: flex;
-    flex-flow: column wrap;
-    align-content: flex-start;
+       overflow: scroll;
+       width: 100vw;
+       height: 100vh;
+       background-color: black;
+       font-family: fira code retina;
+       font-size: .9em;
+       background-image: url("bg.jpg");
+       margin: 0px;
+       align-items: center;
+       padding: 0px;
+       border: 0px;
+       display: grid;
+       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
 
 .cheet-container {
-    width: 400px;
-    background-color: var(--box-color);
-    margin: 4px 10px;
-    padding: 2px;
-    border-radius: 5px;
-    border-style: solid;
-    border-color: coral;
+       min-width: 0px;
+       background-color: var(--box-color);
+       margin: 4px 10px;
+       padding: 2px;
+       border-radius: 8px;
+       border-style: solid;
+       border-color: coral;
 }
 
 .cheet-header-container {
     margin: auto;
     width: 100%;
-    display: inline-flex; 
+    display: inline-flex;
     justify-content:space-between;
     align-items: stretch;
 }
@@ -160,7 +158,7 @@ time, mark, audio, video {
     border: 5px;
     border-radius: 5px;
     color: white;
-    background-color: rgba(113,119,191,75%);     
+    background-color: rgba(113,119,191,75%);
 }
 .cheet-container-old {
     border: 5px;
@@ -208,4 +206,3 @@ time, mark, audio, video {
     padding: 2px;
     color: var(--tag-color);
 }
-
