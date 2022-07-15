@@ -35,13 +35,14 @@ class DB:
         return cheets
 
     def delete(self, id):
-        cheet = None
+        print(f"deleting id: {id}")
         for cheet in self.cheets:
-            if cheet.id == id:
+            if cheet.id in id:
+                print(f"removed {id}")
                 self.cheets.remove(cheet)
 
     def update(self, cheet):
-        self.cheets.remove(id)
+        self.delete(cheet.id)
         self.cheets.append(cheet)
 
 db = DB()

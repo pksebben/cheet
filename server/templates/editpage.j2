@@ -14,6 +14,7 @@
 	<div class="sheet-page-container">
 	  {% for cheet in cheets %}
 	    <form method="POST" action="/update/{{ cheet.id }}">
+	      <input type='hidden' class='id' id='id' name="id" value="{{ cheet.id }}">
 	      <div class="cheet-container">
 		<div class="cheet-header-container">
 		  <p contenteditable id="title-{{ cheet.id }}" class="fauxinput name">{{ cheet.name }}</p>
@@ -40,7 +41,8 @@
 		  {% endif %}
 		</ul>
 	      </div>
-	      <input type="submit" value="update" >
+	      <input type="submit" value="update">
+	      <a href="{{ url_for('api.delete', id=cheet.id ) }}">delete</a>
 	    </form>
 	    {% endfor %}
       <script src="{{ url_for('static', filename='formsender.js')}}"></script>

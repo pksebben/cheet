@@ -6,7 +6,7 @@ import random
 
 class CheetSchema(Schema):
     name = fields.Str()
-    id = fields.UUID()
+    id = fields.Str()
     key = fields.Str()
     context = fields.Str()
     description = fields.Str()
@@ -46,7 +46,7 @@ class Cheet:
         if id is not None:
             self.id = id
         else:
-            self.id = uuid4()
+            self.id = str(uuid4())
 
 
     def vim_edit(self, cheet = None):

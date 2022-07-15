@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect
 
 from core.cheet import Cheet
+from db import db
 
 
 api = Blueprint('api', __name__,
@@ -13,8 +14,12 @@ def update(id):
 
     f = request.form
 
+    for key in f.keys():
+        print(f"[{key}] :: {f.get(key)}")
+
     name = f.get('name')
     id = f.get('id')
+    print(f"got id: {id}")
     key = f.get('key')
     context = f.get('context')
     description = f.get('description')
@@ -29,8 +34,10 @@ def update(id):
                   note if len(note) >= 1 else None,
                   [tag for tag in tags.split(" ")] if tags is not None else None,
                   id)
-    cheet.pprint()
 
+    cheet
+
+    db.update(cheet)
 
     return redirect('/editpage')
 
@@ -42,3 +49,8 @@ def get():
         cm.return_by(searchin, searchfor)
     else:
         return Cheet.schema.dumps(cm.cheets, many=True)
+
+@api.route('/delete/<id>', methods=['GET'])
+def delete(id):
+    db.delete(id)
+    return redirect('/editpage')
