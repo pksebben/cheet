@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+      <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='styles/basic.css')}}">
+      <script>
+	var source = new EventSource('/listen');
+	source.onmessage = function (event) {
+	    alert(event.data)
+	}
+      </script>
+    </head>
+    <body>
+	<div class="sheet-page-container">
+	  {% for cheet in cheets %}
+	    <form method="POST" action="/update/{{ cheet.id }}">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable id="title-{{ cheet.id }}" class="fauxinput name">{{ cheet.name }}</p>
+		  <input type="hidden">
+		  <p contenteditable id="context-{{ cheet.id }}" class="fauxinput context">{{ cheet.context }}</p>
+		  <kbd contenteditable id="key-{{ cheet.id }}" class="fauxinput key">{{ cheet.key }}</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable id="desc-{{ cheet.id}}" class="fauxinput description">{{ cheet.description }}</p>
+		</div>
+		<p contenteditable id="note-{{ cheet.id }}" class="fauxinput note">
+		  {% if cheet.note %}
+		    {{ cheet.note }}
+		  {% else %}
+		    No notes.
+		  {% endif %}
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+		  {% if cheet.tags %}
+		    {% for tag in cheet.tags %}
+		      <li contenteditable class="fauxinput tag-item">{{ tag }}</li>
+		    {% endfor %}
+		  {% endif %}
+		</ul>
+	      </div>
+	      <input type="submit" value="update" >
+	    </form>
+	    {% endfor %}
+      <script src="{{ url_for('static', filename='formsender.js')}}"></script>
+
+	</div>
+    </body>
+</html>

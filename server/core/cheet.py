@@ -9,7 +9,7 @@ class CheetSchema(Schema):
     id = fields.UUID()
     key = fields.Str()
     context = fields.Str()
-    desc = fields.Str()
+    description = fields.Str()
     note = fields.Str()
     tags = fields.List(fields.Str())
 
@@ -17,11 +17,17 @@ class CheetSchema(Schema):
     def make_cheet(self, data, **kwargs):
         return Cheet(**data)
 
+
 class Cheet:
     # statics
     schema = CheetSchema()
 
     # constructors
+    @classmethod
+    def load_file(self, path):
+        """load a set of cheets from a json file"""
+        with open(path, "r") as f:
+            return self.schema.loads(f.read(), many=True)
 
     def __init__(self,
                  name,
@@ -67,6 +73,9 @@ tags: [%s]""" % (self.name or '',
             text = open(temp.name, 'r').read()
             print('')
             print(text)
+
+    def pprint(self):
+        print(self.schema.dumps(self, indent=3))
 
 
 # def extract_kb(args):
