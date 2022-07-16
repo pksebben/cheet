@@ -12,8 +12,8 @@ class CheetSchema(Schema):
     key = fields.Str()
     context = fields.Str()
     description = fields.Str()
-    note = fields.Str()
-    tags = fields.List(fields.Str())
+    note = fields.Str(allow_none=True)
+    tags = fields.List(fields.Str(), allow_none=True)
 
     @post_load
     def make_cheet(self, data, **kwargs):
@@ -31,12 +31,12 @@ class Cheet:
         try:
             with open(path, "r") as f:
                 return self.schema.loads(f.read(), many=True)
-        except ValidationError:
+        except ValidationError as e:
             cheet = Cheet('error',
                           'N/A',
                           'err',
                           f'There was a validation error loading {path}')
-            print(f"Validation error for {path}")
+            print(f"Validation error for {path}: {e}")
             return [cheet]
 
     def __init__(self,

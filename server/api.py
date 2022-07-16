@@ -10,29 +10,14 @@ api = Blueprint('api', __name__,
 @api.route('/update/<id>', methods=["POST"])
 def update(id):
     """updates display with selected cheets"""
-    print(f"attempting to update {id}")
-
     f = request.form
-
-    name = f.get('name')
-    id = f.get('id')
-    print(f"got id: {id}")
-    key = f.get('key')
-    context = f.get('context')
-    description = f.get('description')
-    note = f.get('note')
-    tags = f.get('tags')        # these will have to be mutated
-    # clientside, probs
-
-    cheet = Cheet(name,
-                  key,
-                  context,
-                  description if len(description) >= 1 else None,
-                  note if len(note) >= 1 else None,
-                  [tag for tag in tags.split(" ")] if tags is not None else None,
-                  id)
-
-    cheet
+    cheet = Cheet(f.get('name'),
+                  f.get('key'),
+                  f.get('context'),
+                  f.get('description'),
+                  f.get('note'),
+                  f.get('tags'),
+                  f.get('id'))
 
     db.update(cheet)
 

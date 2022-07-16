@@ -42,7 +42,7 @@
 		</ul>
 	      </div>
 	      <input type="submit" value="update">
-	      <a href="{{ url_for('api.delete', id=cheet.id ) }}">delete</a>
+	      <button type='button' onclick="location.href='{{ url_for('api.delete', id=cheet.id ) }}'">delete</button>
 	    </form>
 	    {% endfor %}
 
