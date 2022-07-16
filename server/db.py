@@ -16,7 +16,7 @@ class DB:
 
     def save(self):
         with open(self.cheetfile, "w") as f:
-            f.write(Cheet.schema.dumps(self.cheets))
+            f.write(Cheet.schema.dumps(self.cheets, many=True))
 
     def get(self, id):
         for cheet in self.cheets:
@@ -40,9 +40,15 @@ class DB:
             if cheet.id in id:
                 print(f"removed {id}")
                 self.cheets.remove(cheet)
+        self.save()
 
     def update(self, cheet):
         self.delete(cheet.id)
         self.cheets.append(cheet)
+        self.save()
+
+    def create(self, cheet):
+        self.cheets.append(cheet)
+        self.save()
 
 db = DB()

@@ -45,6 +45,30 @@
 	      <a href="{{ url_for('api.delete', id=cheet.id ) }}">delete</a>
 	    </form>
 	    {% endfor %}
+
+	    <form method="POST" action="/create">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable id="title-new" class="fauxinput name">new cheet</p>
+		  <input type="hidden">
+		  <p contenteditable id="context-new" class="fauxinput context">context</p>
+		  <kbd contenteditable id="key-new" class="fauxinput key">key</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable id="desc-new" class="fauxinput description">description goes here</p>
+		</div>
+		<p contenteditable id="note-new" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+		  <li>TODO</li>
+		  <li>tags</li>
+		</ul>
+	      </div>
+	      <input type="submit" value="create">
+	    </form>
+
       <script src="{{ url_for('static', filename='formsender.js')}}"></script>
 
 	</div>

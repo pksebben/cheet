@@ -1,6 +1,8 @@
 import json
 from uuid import uuid4
 from marshmallow import Schema, fields, post_load
+from marshmallow.exceptions import ValidationError
+
 # import cheet_compile
 import random
 
@@ -26,8 +28,16 @@ class Cheet:
     @classmethod
     def load_file(self, path):
         """load a set of cheets from a json file"""
-        with open(path, "r") as f:
-            return self.schema.loads(f.read(), many=True)
+        try:
+            with open(path, "r") as f:
+                return self.schema.loads(f.read(), many=True)
+        except ValidationError:
+            cheet = Cheet('error',
+                          'N/A',
+                          'err',
+                          f'There was a validation error loading {path}')
+            print(f"Validation error for {path}")
+            return [cheet]
 
     def __init__(self,
                  name,

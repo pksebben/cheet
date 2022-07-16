@@ -14,9 +14,6 @@ def update(id):
 
     f = request.form
 
-    for key in f.keys():
-        print(f"[{key}] :: {f.get(key)}")
-
     name = f.get('name')
     id = f.get('id')
     print(f"got id: {id}")
@@ -49,6 +46,18 @@ def get():
         cm.return_by(searchin, searchfor)
     else:
         return Cheet.schema.dumps(cm.cheets, many=True)
+
+@api.route('/create', methods=["POST"])
+def create():
+    f = request.form
+    cheet = Cheet(f.get('name'),
+                  f.get('key'),
+                  f.get('context'),
+                  f.get('description'),
+                  f.get('note'),
+                  f.get('tags'))
+    db.create(cheet)
+    return redirect('/editpage')
 
 @api.route('/delete/<id>', methods=['GET'])
 def delete(id):
