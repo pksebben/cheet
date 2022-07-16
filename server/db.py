@@ -1,5 +1,4 @@
 from core.cheet import Cheet
-from core.manager import CheetManager
 
 """handle all persistence operations"""
 
@@ -37,11 +36,13 @@ class DB:
         """return a set of cheets matching val in field"""
         cheets = []
         for cheet in self.cheets:
-            d = dict(cheet)
-            if val in d[field]:
-                cheets.append(cheet)
-        if cheets == []:
-            raise NotFoundError(f"we found no cheets with a {field} = {val}")
+            d = vars(cheet)
+            print(f"dict of cheet: {d}")
+            if d[field] is not None:
+                if val in d[field]:
+                    cheets.append(cheet)
+        # if cheets == []:
+            # raise NotFoundError(f"we found no cheets with a {field} = {val}")
         return cheets
 
     def delete(self, id):

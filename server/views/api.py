@@ -4,6 +4,7 @@ from flask import Blueprint, render_template, request, redirect
 
 from core.cheet import Cheet
 from db import db
+from config import config
 
 
 api = Blueprint('api', __name__,
@@ -15,6 +16,15 @@ def extract_cheet(form):
     for key in form.keys():
         d[key] = html.unescape(form.get(key))
     cheet = Cheet.from_dict(d)
+
+@api.route('/configure/cheetfilter', methods=['POST'])
+def configure_cheetfilter():
+    field = request.form.get('field')
+    val = request.form.get('value')
+    config['cheetfilter'] = (field, val)
+    if request.form.get('clear') is not None:
+        del config['cheetfilter']
+    return redirect('/editpage')
 
 @api.route('/update/<id>', methods=["POST"])
 def update(id):

@@ -11,6 +11,26 @@
       </script>
     </head>
     <body>
+      <div class="control-panel">
+	<form method="POST" action="/configure/cheetfilter">
+	    <select name="field" id="fieldselector">
+		<option value="tags">tag</option>
+		<option value="context">context</option>
+		<option value="name">name</option>
+	    </select>
+	    <input type="text" name="value"></input>
+	    <input type="submit" value="filter"></input>
+	</form>
+	<form method="POST" action="/configure/cheetfilter">
+	    <input type="hidden" value="clear" name="clear"></input>
+	    <input type="submit" value="clear filters"></input>
+	</form>
+	{% if config['cheetfilter'] %}
+	    <p>Filtering by {{ config['cheetfilter'][0] }} = {{ config['cheetfilter'][1] }}</p>
+	{% endif %}
+
+      </div>
+
 	<div class="sheet-page-container">
 	  {% for cheet in cheets %}
 	    <form method="POST" action="/update/{{ cheet.id }}">
