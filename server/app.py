@@ -8,10 +8,10 @@ from core.cheet import Cheet
 from db import db
 
 # blueprints
-from api import api
-from web_interface import interface
-from display import display
-from editpage import editpage
+from views.api import api
+from views.web_interface import interface
+from views.display import display
+from views.editpage import editpage
 
 app = flask.Flask(__name__)
 

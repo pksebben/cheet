@@ -5,18 +5,8 @@ from wtforms.validators import DataRequired
 
 from db import db
 
-class CheetForm(Form):
-    name = StringField('name')
-    id = StringField('id')
-    key = StringField('key')
-    context = StringField('context')
-    description = TextAreaField('description')
-    note = StringField('note')
-    tags = StringField('tags')
-
 editpage = Blueprint('editpage', __name__,
                      template_folder='templates')
-
 
 @editpage.route('/editpage')
 def home():

@@ -12,24 +12,29 @@ class DB:
         # lost the whole cheet file once.  This is a precaution.
         with open(cheetfile, "r") as f:
             with open(cheetfile + ".backup", "w") as t:
-                f.write(t)
+                t.write(f.read())
         self.cheets = Cheet.load_file(cheetfile)
 
-
     def load_file(self, path):
+        """load a set of cheets from a json file"""
         self.cheets = Cheet.load_file(path)
 
-    def save(self, path=self.cheetfile):
+    def save(self, path=None):
+        """save all cheets to file as json"""
+        if path is None:
+            path = self.cheetfile
         with open(path, "w") as f:
             f.write(Cheet.schema.dumps(self.cheets, many=True))
 
     def get(self, id):
+        """return cheet by id"""
         for cheet in self.cheets:
             if cheet.id == id:
                 return cheet
         raise NotFoundError(f"No cheet by id {id} found.")
 
     def get_by(self, field, val):
+        """return a set of cheets matching val in field"""
         cheets = []
         for cheet in self.cheets:
             d = dict(cheet)
@@ -40,6 +45,7 @@ class DB:
         return cheets
 
     def delete(self, id):
+        """delete cheet by id"""
         print(f"deleting id: {id}")
         for cheet in self.cheets:
             if cheet.id in id:
@@ -48,6 +54,7 @@ class DB:
         self.save()
 
     def update(self, cheet):
+        """update cheet"""
         self.delete(cheet.id)
         self.cheets.append(cheet)
         self.save()

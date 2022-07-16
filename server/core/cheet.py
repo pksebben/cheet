@@ -1,4 +1,6 @@
 import json
+import tempfile
+import subprocess
 from uuid import uuid4
 from marshmallow import Schema, fields, post_load
 from marshmallow.exceptions import ValidationError
@@ -39,11 +41,29 @@ class Cheet:
             print(f"Validation error for {path}: {e}")
             return [cheet]
 
+    @classmethod
+    def from_dict(self, cdict):
+        required = ['name', 'key', 'context', 'description']
+        for k in required:
+            if k not in cdict.keys():
+                raise ValidationError(f"missing key: {k}")
+
+        cheet = Cheet(
+            cdict.get('name'),
+            cdict.get('key'),
+            cdict.get('context'),
+            cdict.get('description'),
+            cdict.get('note'),
+            cdict.get('tags'),
+            cdict.get('id')
+        )
+        return cheet
+
     def __init__(self,
                  name,
                  key,
                  context,
-                 description = None,
+                 description,
                  note = None,
                  tags = None,
                  id = None):
@@ -59,64 +79,22 @@ class Cheet:
             self.id = str(uuid4())
 
 
-    def vim_edit(self, cheet = None):
+    def vim_edit(self):
         """edit this cheet using a vim subprocess"""
         # TODO: accept cheet and return it as json?
         # TODO: cheet validation
-        cheet_template ="""Edit your cheet here. Ensure you do not mangle the format.
-name: %s
-key: %s
-context: %s
-description: %s
-note: %s
-tags: [%s]""" % (self.name or '',
-            self.key or '',
-            self.context or '',
-            self.description or '',
-            self.note or '',
-            self.tags or '')
+
+        c = Cheet.schema.dumps(self, indent=2)
 
         with tempfile.NamedTemporaryFile(suffix='temp') as temp:
             with open(temp.name, "w") as t:
-                t.write(cheet_template)
+                t.write(c)
             subprocess.call(['/usr/bin/vim', temp.name])
             text = open(temp.name, 'r').read()
-            print('')
-            print(text)
+            return Cheet.schema.loads(text)
 
     def pprint(self):
         print(self.schema.dumps(self, indent=3))
-
-
-# def extract_kb(args):
-#     kb = {
-#         'name' : args['ACTION'],
-#         'key' : args['KEYBIND'],
-#         'description': args['-d'] if args['-d'] else None,
-#         'note' : args['-n'] if args['-n'] else "No notes",
-#         'tags' : args['TAGS'] if args['TAGS'] else None,
-#         'context' : args['CONTEXT']
-#     }
-#     return kb
-
-
-# def add_to_store(store, kb):
-#     """this is a crap way to store data.  Makes it hard to use later."""
-#     for item in store:
-#         if item['context'] == kb['context'] and item['name'] == kb['name']:
-#             ow = input("%s exists in context %s. overwrite? (y/n):" % (kb['name'], kb['context']))
-#             while ow not in ("Y","y","N","n"):
-#                 print("bad input. please input Y, y, N or n.")
-#                 ow = input("%s exists in context %s. overwrite? (y/n):" % (kb['name'], kb['context']))
-#                 if ow in ("y" , "Y"):
-#                     store.remove(item) # TODO: this is prolly wrong
-#                     store.append(kb)
-#                     print("stored: %s \nin context: %s" % (kb[1], kb[0]))
-#     else:
-#         store.append(kb)
-#         print("stored: %s \nin context: %s" % (kb['name'], kb['context']))
-
-
 
 # def prompt_input(options, prompt=None):
 #     if prompt:
@@ -127,13 +105,6 @@ tags: [%s]""" % (self.name or '',
 #     else:
 #         print("sorry, I didn't understand that")
 #         return prompt_input(options, prompt)
-
-# def validate(_input):
-#     pass
-
-# def clear_output():
-#     for i in range(15):
-#         print('\n')
 
 # def loop(kb_list):
 #     prompt = "\nyou may manage your keybind store here.\n\nls to list keybindings\nrm <INDEX> to remove a keybinding \ncat <INDEX> to print a verbose definition of a keybinding \nvi <INDEX> to edit a keybinding \n"

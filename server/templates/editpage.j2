@@ -25,13 +25,7 @@
 		<div class="cheet-desc-container">
 		  <p contenteditable id="desc-{{ cheet.id}}" class="fauxinput description">{{ cheet.description }}</p>
 		</div>
-		<p contenteditable id="note-{{ cheet.id }}" class="fauxinput note">
-		  {% if cheet.note %}
-		    {{ cheet.note }}
-		  {% else %}
-		    No notes.
-		  {% endif %}
-		</p>
+		<p contenteditable id="note-{{ cheet.id }}" class="fauxinput note">{{ cheet.note }}</p>
 		<ul class="cheet-tag-list">
 		  <lh class="cheet-tag-list-header">Tags:</lh>
 		  {% if cheet.tags %}
@@ -43,6 +37,7 @@
 	      </div>
 	      <input type="submit" value="update">
 	      <button type='button' onclick="location.href='{{ url_for('api.delete', id=cheet.id ) }}'">delete</button>
+	      <button type='button' onclick="location.href='{{ url_for('api.vimedit', id=cheet.id ) }}'">vim!</button>
 	    </form>
 	    {% endfor %}
 
@@ -67,6 +62,8 @@
 		</ul>
 	      </div>
 	      <input type="submit" value="create">
+
+	      <button type='button' onclick="location.href='{{ url_for('api.vimedit', id='newcheet' ) }}'">vim!</button>
 	    </form>
 
       <script src="{{ url_for('static', filename='formsender.js')}}"></script>
