@@ -1,36 +1,23 @@
-# Cheat Sheet Dev Log
+# Cheet dev log
 
-How are we going to implement?
+Saturday, July 16, 2022
+14:08:10:
+Cheet has undergone some pretty drastic changes since the old cli.
+There is now a fully functional web app, with only one feature from
+the 'old' cheet remaining (that of vim editing; it was too cool not to
+use).  That said, I've archived the old version of cheet (parts of it,
+at least) in /old_cheet/ for posterity and because I want to
+reimplement a cli and compiling / desktop rendering at some point.
 
-Pandoc
+# LOG
 
-python to svg / raster / pdf
+## Saturday, July 16, 2022
 
-drawing libs / simple text rendering.
-
-# Concepts
-
-Output to qwerty overlay?
-inkscape??
-
-rust ((resvg, piet))
-
-# FIXME
-
-Inputting a command with a trailing space crashes.  This is not preferable behavior (encountered when entering fields in 'vi' mode)
-
-# LOG 
-
-## Saturday, June 11, 2022
 
 BOOKMARK: ,./
 
 # TODO
 
-[ ] implement the new vim editing behavior
-[ ] implement EventSource
-[ ] browser display
-[ ] absolute pathing to screenshot output
-[ ] global config object
-[ ] directory structure / modularization
-[ ] data sources / apropos => cheets
+[ ] polish on the vim editor
+	[ ] fields should render in the same order all the time
+	[ ]
