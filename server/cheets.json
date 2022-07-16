@@ -1,1 +1,1 @@
-[{"note": null, "description": "There was a validation error loading cheets.json", "context": "err", "key": "N/A", "tags": null, "name": "error", "id": "b89591aa-09a7-4f37-9a94-6b9d9710fe08"}]
+[{"id": "b89591aa-09a7-4f37-9a94-6b9d9710fe08", "context": "emacs", "note": "\r\n\t\t  \r\n\t\t    No notes.\r\n\t\t  \r\n\t\t", "name": "eval-minibuffer", "key": "M-:", "description": "Pops into a minibuffer for evaluating expressions.&nbsp; Useful for navigating emacs' twisty elisp stuffs.", "tags": null}]

@@ -28,7 +28,7 @@ def get():
     if request.method == 'POST':
         searchfor = request.form['searchfor']
         searchin = request.form['searchin']
-        cm.return_by(searchin, searchfor)
+        db.get_by(searchin, searchfor)
     else:
         return Cheet.schema.dumps(cm.cheets, many=True)
 

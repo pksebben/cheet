@@ -8,7 +8,7 @@ import random
 
 class CheetSchema(Schema):
     name = fields.Str()
-    id = fields.Str()
+    id = fields.Str(default=str(uuid4()))
     key = fields.Str()
     context = fields.Str()
     description = fields.Str()

@@ -9,13 +9,18 @@ class NotFoundError(Exception):
 class DB:
     def __init__(self, cheetfile = 'cheets.json'):
         self.cheetfile = cheetfile
+        # lost the whole cheet file once.  This is a precaution.
+        with open(cheetfile, "r") as f:
+            with open(cheetfile + ".backup", "w") as t:
+                f.write(t)
         self.cheets = Cheet.load_file(cheetfile)
+
 
     def load_file(self, path):
         self.cheets = Cheet.load_file(path)
 
-    def save(self):
-        with open(self.cheetfile, "w") as f:
+    def save(self, path=self.cheetfile):
+        with open(path, "w") as f:
             f.write(Cheet.schema.dumps(self.cheets, many=True))
 
     def get(self, id):
@@ -28,7 +33,7 @@ class DB:
         cheets = []
         for cheet in self.cheets:
             d = dict(cheet)
-            if d[field] == val:
+            if val in d[field]:
                 cheets.append(cheet)
         if cheets == []:
             raise NotFoundError(f"we found no cheets with a {field} = {val}")
