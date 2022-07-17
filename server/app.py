@@ -27,10 +27,5 @@ app.register_blueprint(interface)
 app.register_blueprint(display)
 app.register_blueprint(editpage)
 
-@app.route('/')
-def home():
-    page = render_template("basic.j2", cheets = db.cheets)
-    return page
-
 if __name__ == "__main__":
     app.run(debug=True, port="8765")

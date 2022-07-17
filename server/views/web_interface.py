@@ -1,6 +1,4 @@
 from flask import Blueprint, render_template
-from wtforms import StringField
-from flask_wtf import FlaskForm
 
 from db import db
 
