@@ -24,7 +24,7 @@ def configure_cheetfilter():
     config['cheetfilter'] = (field, val)
     if request.form.get('clear') is not None:
         del config['cheetfilter']
-    return redirect('/editpage')
+    return redirect('/')
 
 @api.route('/update/<id>', methods=["POST"])
 def update(id):
@@ -32,7 +32,7 @@ def update(id):
     cheet = extract_cheet(request.form)
     db.update(cheet)
 
-    return redirect('/editpage')
+    return redirect('/')
 
 @api.route('/get', methods=['GET', 'POST'])
 def get():
@@ -49,13 +49,13 @@ def create():
     """create a cheet from formdata"""
     cheet = extract_cheet(request.form)
     db.create(cheet)
-    return redirect('/editpage')
+    return redirect('/')
 
 @api.route('/delete/<id>', methods=['GET'])
 def delete(id):
     """delete cheet by id"""
     db.delete(id)
-    return redirect('/editpage')
+    return redirect('/')
 
 @api.route('/vimedit/<id>', methods=['GET'])
 def vimedit(id):
@@ -66,4 +66,4 @@ def vimedit(id):
         cheet = db.get(id)
     cheet = cheet.vim_edit()
     db.update(cheet)
-    return redirect('/editpage')
+    return redirect('/')
