@@ -30,4 +30,4 @@ Cheet will save to `cheets.json` on every update, delete, etc.
  - cli reimplementation
    - SSE display updating
  - configuration page
- - sort / reduce
+ - sort / reduce (DONE)

@@ -19,19 +19,7 @@ class Config(dict):
             self.init_macos()
 
     def init_macos(self):
-        PREFERENCES = (
-            Path.home()
-            / "Library"
-            / "Preferences"
-            / "com.apple.LaunchServices/com.apple.launchservices.secure.plist"
-        )
-        with PREFERENCES.open('rb') as fp:
-            plist = plistlib.load(fp)
-        for handler in plist['LSHandlers']:
-            if handler.get('LSHandlerURLScheme') == 'http':
-                self.browserhandler = handler['LSHandlerRoleAll']
-
-
+        pass
 
 
 config = Config()
