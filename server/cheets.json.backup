@@ -1,128 +1,137 @@
 [
   {
-    "id": "b89591aa-09a7-4f37-9a94-6b9d9710fe08",
     "note": "\r\n\t\t  \r\n\t\t    No notes.\r\n\t\t  \r\n\t\t",
+    "name": "eval-minibuffer",
+    "context": "emacs",
     "description": "Pops into a minibuffer for evaluating expressions.&nbsp; Useful for navigating emacs' twisty elisp stuffs.",
+    "id": "b89591aa-09a7-4f37-9a94-6b9d9710fe08",
     "tags": null,
-    "key": "M-:",
-    "context": "emacs",
-    "name": "eval-minibuffer"
+    "key": "M-:"
   },
   {
-    "id": "878371dc-543b-4df5-a978-7c739bc24298",
     "note": null,
+    "name": "descbinds",
+    "context": "emacs",
     "description": "list all bindings",
+    "id": "878371dc-543b-4df5-a978-7c739bc24298",
     "tags": null,
-    "key": "C-h b",
-    "context": "emacs",
-    "name": "descbinds"
+    "key": "C-h b"
   },
   {
-    "id": "55cd0896-abea-4c83-92ec-7c2db52cd405",
     "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "kill-buffer",
+    "context": "emacs",
     "description": "Kill buffer by name.&nbsp; Prompts for input.",
+    "id": "55cd0896-abea-4c83-92ec-7c2db52cd405",
     "tags": null,
-    "key": "C-x k",
-    "context": "emacs",
-    "name": "kill-buffer"
+    "key": "C-x k"
   },
   {
-    "id": "8cb192b6-4917-42be-aa2e-3d19509a6df3",
     "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "kill-sentence",
+    "context": "emacs",
     "description": "Kill from point to end of sentence.",
+    "id": "8cb192b6-4917-42be-aa2e-3d19509a6df3",
     "tags": null,
-    "key": "M-k",
-    "context": "emacs",
-    "name": "kill-sentence"
+    "key": "M-k"
   },
   {
-    "id": "f8953633-089e-4559-9f0e-443cdb8fa074",
     "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "regexp for minibuffer history",
+    "context": "emacs",
     "description": "Regex search through previous minibuffer history",
+    "id": "f8953633-089e-4559-9f0e-443cdb8fa074",
     "tags": null,
-    "key": "M-r REGX &lt;RET&gt;",
-    "context": "emacs",
-    "name": "regexp for minibuffer history"
+    "key": "M-r REGX &lt;RET&gt;"
   },
   {
-    "id": "3b93655b-dfc0-4084-8d8b-bd27704187f0",
     "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "goto next",
+    "context": "vim",
     "description": "Find the next example of word under cursor.",
+    "id": "3b93655b-dfc0-4084-8d8b-bd27704187f0",
     "tags": null,
-    "key": "*",
-    "context": "vim",
-    "name": "goto next"
+    "key": "*"
   },
   {
-    "id": "68c738bd-9946-4c3d-be66-7c82a4bd7140",
     "note": "\r\n\t\t  \r\n\t\t    \r\n\t\t  Note\r\n\t\t\r\n\t\t  \r\n\t\t",
+    "name": "incsearch",
+    "context": "vim",
     "description": "If you set the incsearch option, Vim will show the first match for the pattern, while you are still typing it",
+    "id": "68c738bd-9946-4c3d-be66-7c82a4bd7140",
     "tags": null,
-    "key": "-config-",
-    "context": "vim",
-    "name": "incsearch"
+    "key": "-config-"
   },
   {
-    "id": "e3ef1d52-4ca2-4f73-8d00-20b4219be8b9",
     "note": "\r\n\t\t  \r\n\t\t    \r\n\t\t  Note\r\n\t\t\r\n\t\t  \r\n\t\t",
+    "name": "jump-to-brace",
+    "context": "vim",
     "description": "Jump to matching closing brace.",
+    "id": "e3ef1d52-4ca2-4f73-8d00-20b4219be8b9",
     "tags": null,
-    "key": "%",
-    "context": "vim",
-    "name": "jump-to-brace"
+    "key": "%"
   },
   {
-    "id": "a42063ae-0574-4170-8266-f0b56906cf6f",
     "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "adv. move",
+    "context": "vim",
     "description": "Each triggers a command to go forwards `]` or backwards `[` by things like closing parens and marks.",
+    "id": "a42063ae-0574-4170-8266-f0b56906cf6f",
     "tags": null,
-    "key": "\\[&nbsp;",
-    "context": "vim",
-    "name": "adv. move"
+    "key": "\\[&nbsp;"
   },
   {
-    "id": "4f88ccff-477c-4937-91f4-0e447bcdf4c1",
     "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "jump-block",
+    "context": "vim",
     "description": "Move &gt; or &lt;, by block.",
+    "id": "4f88ccff-477c-4937-91f4-0e447bcdf4c1",
     "tags": null,
-    "key": "C-[ / ]",
-    "context": "vim",
-    "name": "jump-block"
+    "key": "C-[ / ]"
   },
   {
-    "id": "9704fac2-d051-475a-9e74-3310652b13db",
     "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "repeat-last-change",
+    "context": "vim",
     "description": "Repeat last command (like change-word)",
+    "id": "9704fac2-d051-475a-9e74-3310652b13db",
     "tags": null,
-    "key": ".",
-    "context": "vim",
-    "name": "repeat-last-change"
+    "key": "."
   },
   {
-    "id": "f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4",
     "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "record-macro",
+    "context": "vim",
     "description": "Start recording into &lt;register&gt;",
+    "id": "f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4",
     "tags": null,
-    "key": "q &lt;register&gt;",
-    "context": "vim",
-    "name": "record-macro"
+    "key": "q &lt;register&gt;"
   },
   {
-    "id": "48afbce6-2d2f-4720-966f-04013075dc67",
     "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "play-macro",
+    "context": "vim",
     "description": "Playback macro at &lt;register&gt;",
+    "id": "48afbce6-2d2f-4720-966f-04013075dc67",
     "tags": null,
-    "key": "@ &lt;register&gt;",
-    "context": "vim",
-    "name": "play-macro"
+    "key": "@ &lt;register&gt;"
   },
   {
-    "id": "dd106cf5-e702-45d7-a11c-72e99b1affb5",
     "note": "\r\n\t\t  Note\r\n\t\t",
-    "description": "description goes here",
-    "tags": null,
-    "key": ":grep",
+    "name": "grep-files",
     "context": "vim",
-    "name": "grep-files"
+    "description": "description goes here",
+    "id": "dd106cf5-e702-45d7-a11c-72e99b1affb5",
+    "tags": null,
+    "key": ":grep"
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "name": "new cheet",
+    "context": "context",
+    "description": "description goes here",
+    "id": "3ff2f4d0-4243-4272-977d-2356fcd1cfe4",
+    "tags": null,
+    "key": "key"
   }
 ]

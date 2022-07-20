@@ -14,9 +14,9 @@ class DB:
                 t.write(f.read())
         self.cheets = Cheet.load_file(cheetfile)
 
-    def load_file(self, path):
+    def load_file(self, path, append=True):
         """load a set of cheets from a json file"""
-        self.cheets = Cheet.load_file(path)
+        self.cheets.append(Cheet.load_file(path))
 
     def save(self, path=None):
         """save all cheets to file as json"""
@@ -41,13 +41,12 @@ class DB:
             if d[field] is not None:
                 if val in d[field]:
                     cheets.append(cheet)
-        # if cheets == []:
-            # raise NotFoundError(f"we found no cheets with a {field} = {val}")
         return cheets
 
     def delete(self, id):
         """delete cheet by id"""
         print(f"deleting id: {id}")
+        print(f"{self.cheets}")
         for cheet in self.cheets:
             if cheet.id in id:
                 print(f"removed {id}")

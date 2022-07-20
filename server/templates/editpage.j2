@@ -33,7 +33,7 @@
 
 	<div class="sheet-page-container">
 	  {% for cheet in cheets %}
-	    <form method="POST" action="/update/{{ cheet.id }}">
+	    <form method="POST" action="/update">
 	      <input type='hidden' class='id' id='id' name="id" value="{{ cheet.id }}">
 	      <div class="cheet-container">
 		<div class="cheet-header-container">

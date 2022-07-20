@@ -16,6 +16,7 @@ def extract_cheet(form):
     for key in form.keys():
         d[key] = html.unescape(form.get(key))
     cheet = Cheet.from_dict(d)
+    return cheet
 
 @api.route('/configure/cheetfilter', methods=['POST'])
 def configure_cheetfilter():
@@ -26,8 +27,8 @@ def configure_cheetfilter():
         del config['cheetfilter']
     return redirect('/')
 
-@api.route('/update/<id>', methods=["POST"])
-def update(id):
+@api.route('/update', methods=["POST"])
+def update():
     """updates display with selected cheets"""
     cheet = extract_cheet(request.form)
     db.update(cheet)

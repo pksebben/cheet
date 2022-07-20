@@ -19,7 +19,10 @@ class CheetSchema(Schema):
 
     @post_load
     def make_cheet(self, data, **kwargs):
-        return Cheet(**data)
+        try:
+            return Cheet(**data)
+        except Exception as e:
+            print(f"failed to make cheet: {data}\n{e}")
 
 
 class Cheet:
