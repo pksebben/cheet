@@ -37,7 +37,6 @@ class DB:
         cheets = []
         for cheet in self.cheets:
             d = vars(cheet)
-            print(f"dict of cheet: {d}")
             if d[field] is not None:
                 if val in d[field]:
                     cheets.append(cheet)
@@ -45,8 +44,6 @@ class DB:
 
     def delete(self, id):
         """delete cheet by id"""
-        print(f"deleting id: {id}")
-        print(f"{self.cheets}")
         for cheet in self.cheets:
             if cheet.id in id:
                 print(f"removed {id}")

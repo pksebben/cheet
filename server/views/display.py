@@ -52,12 +52,10 @@ def listen():
 
     return Response(stream())
 
-# @api.route('/update/<id>', methods=["POST"])
+# @api.route('/updateview/<id>', methods=["POST"])
 def display_update(id):
     """updates display with selected cheets"""
 
-    print(f"attempting to update {id}")
-    print(request.data)
     msg = format_sse(data='pong')
     dispatcher.update()
     return "updated cheets", 200

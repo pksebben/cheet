@@ -21,6 +21,7 @@ app.register_blueprint(interface)
 app.register_blueprint(display)
 app.register_blueprint(editpage)
 
+
 if __name__ == "__main__":
     if not DEBUG:
         webbrowser.get().open('http://localhost:8765')
