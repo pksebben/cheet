@@ -31,3 +31,5 @@ Cheet will save to `cheets.json` on every update, delete, etc.
    - SSE display updating
  - configuration page
  - sort / reduce (DONE)
+ - task chains / workflow memos
+ - arbitrary dicts

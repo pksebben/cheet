@@ -39,8 +39,10 @@
 		<div class="cheet-header-container">
 		  <p contenteditable id="title-{{ cheet.id }}" class="fauxinput name">{{ cheet.name }}</p>
 		  <input type="hidden">
-		  <p contenteditable id="context-{{ cheet.id }}" class="fauxinput context">{{ cheet.context }}</p>
-		  <kbd contenteditable id="key-{{ cheet.id }}" class="fauxinput key">{{ cheet.key }}</kbd>
+		  <div class="cheet-header-bind-container">
+		    <p contenteditable id="context-{{ cheet.id }}" class="fauxinput context">{{ cheet.context }}</p>
+		    <kbd contenteditable id="key-{{ cheet.id }}" class="fauxinput key">{{ cheet.key }}</kbd>
+		  </div>
 		</div>
 		<div class="cheet-desc-container">
 		  <p contenteditable id="desc-{{ cheet.id}}" class="fauxinput description">{{ cheet.description }}</p>
@@ -50,10 +52,22 @@
 		  <lh class="cheet-tag-list-header">Tags:</lh>
 		  {% if cheet.tags %}
 		    {% for tag in cheet.tags %}
-		      <li contenteditable class="fauxinput tag-item">{{ tag }}</li>
+		      <li>
+			  <p contenteditable class="fauxinput tag-item">{{ tag }}</p>
+			  <button
+			      type='button'
+			      onclick="location.href='{{
+						      url_for('api.remtag',
+							  id=cheet.id,
+							  tag=tag
+						      )}}'">-</button>
+		      </li>
 		    {% endfor %}
 		  {% endif %}
 		</ul>
+		<button type='button' onclick="location.href='{{
+					       url_for('api.addtag', id=cheet.id )}}'">
+					       +</button>
 	      </div>
 	      <input type="submit" value="update">
 	      <button type='button' onclick="location.href='{{ url_for('api.delete', id=cheet.id ) }}'">delete</button>

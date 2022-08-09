@@ -1,0 +1,1086 @@
+<html>
+    <head>
+      <style>
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+:root {
+    --tag-color: #355C7D;
+    --old-header-color: #355C7D;
+    --header-color: #F67280;
+    --context-color: #C06C84;
+    --box-color: rgba(108,91,123,75%);
+}
+
+.control-panel {
+    display: inline-flex;
+}
+
+.sheet-page-container {
+       overflow: scroll;
+       width: 100vw;
+       height: 100vh;
+       background-color: black;
+       font-family: fira code retina;
+       font-size: .9em;
+       background-image: url("bg.jpg");
+       margin: 0px;
+       align-items: center;
+       padding: 0px;
+       border: 0px;
+       display: inline-grid;
+       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.cheet-container {
+       min-width: 0px;
+       background-color: var(--box-color);
+       margin: 4px 10px;
+       padding: 2px;
+       border-radius: 8px;
+       border-style: solid;
+       border-color: coral;
+}
+
+.cheet-header-container {
+    margin: auto;
+    width: 100%;
+    display: inline-flex;
+    justify-content:space-between;
+    align-items: stretch;
+}
+.name {
+    /* height: 20px; */
+    margin: 2px auto 5px 2px;
+    padding: 2px 3px;
+    background-color: var(--header-color);
+    color: white;
+    border: 3px;
+    border-radius:4px;
+    border-style:solid;
+    border-color: var(--header-color);
+    font-weight: 600;
+}
+.context {
+    filter: drop-shadow(0px 0px 3px white);
+    color: rgba(255,255,255,75%);
+    margin: auto max(30px, 2em) auto max(30px, 2em);
+    padding: 1px 7px;
+    border: 1px solid rgba(255,255,255,50%);
+    border-radius: 4px;
+
+}
+
+       .key{
+	   white-space: nowrap;
+	   line-height:100%;
+	   height: min-content;
+	   text-align: center;
+	   background-color: var(--context-color);
+	   margin: 2px 2px 5px auto;
+	   padding: 4px;
+	   color: white;
+	   align-content: center;
+	   justify-content: center;
+	   border-radius: 5px;
+	   border: 5px ;
+	   border-color: var(--context-color);
+       }
+
+       .cheet-header-bind-container {
+	   display: flex;
+	   flex-wrap: wrap-reverse;
+	   justify-content: center;
+       }
+
+.cheet-desc-container {
+    filter: drop-shadow(0px 0px 10px rgba(234,123,255,50%));
+    padding: 5px;
+    border: 5px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(113,119,191,75%);
+}
+.cheet-container-old {
+    border: 5px;
+    border-radius: 15px;
+    background-color:coral;
+    width: 250px;
+    border-style: solid;
+    border-color: coral;
+    flex-wrap: wrap;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.note {
+    color: rgba(113,119,191,100%);
+    margin: 7px 0 auto;
+    padding: 3px;
+    font-style: italic;
+
+}
+
+.cheet-tag-list {
+    color: rgba(255,255,255,65%);
+    list-style: none;
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
+}
+.cheet-tag-list-header {
+
+    color: rgba(255,255,255,100%);
+}
+.tag-item {
+    color: inherit;
+    margin: 3px;
+    background-color: white;
+    border: 3px;
+    border-radius: 3px;
+    padding: 2px;
+    color: var(--tag-color);
+}
+
+      </style>
+
+      <script>
+	var source = new EventSource('/listen');
+	source.onmessage = function (event) {
+	    alert(event.data)
+	}
+      </script>
+    </head>
+    <body>
+      <div class="control-panel">
+	<form method="POST" action="/configure/cheetfilter">
+	    <select name="field" id="fieldselector">
+		<option value="context">context</option>
+		<option value="tags">tag</option>
+		<option value="name">name</option>
+	    </select>
+	    <input type="text" name="value">
+	    <input type="submit" value="filter">
+	</form>
+	<form method="POST" action="/configure/cheetfilter">
+	    <input type="hidden" value="clear" name="clear">
+	    <input type="submit" value="clear filters">
+	</form>
+
+
+      </div>
+
+	<div class="sheet-page-container">
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="b89591aa-09a7-4f37-9a94-6b9d9710fe08">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-b89591aa-09a7-4f37-9a94-6b9d9710fe08" class="fauxinput name">eval-minibuffer</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-b89591aa-09a7-4f37-9a94-6b9d9710fe08" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-b89591aa-09a7-4f37-9a94-6b9d9710fe08" class="fauxinput key">M-:</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-b89591aa-09a7-4f37-9a94-6b9d9710fe08" class="fauxinput description">Pops into a minibuffer for evaluating expressions.&nbsp; Useful for navigating emacs' twisty elisp stuffs.</p>
+		</div>
+		<p contenteditable="" id="note-b89591aa-09a7-4f37-9a94-6b9d9710fe08" class="fauxinput note">
+
+		    No notes.
+
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/b89591aa-09a7-4f37-9a94-6b9d9710fe08'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/b89591aa-09a7-4f37-9a94-6b9d9710fe08'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="878371dc-543b-4df5-a978-7c739bc24298">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-878371dc-543b-4df5-a978-7c739bc24298" class="fauxinput name">descbinds</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-878371dc-543b-4df5-a978-7c739bc24298" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-878371dc-543b-4df5-a978-7c739bc24298" class="fauxinput key">C-h b</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-878371dc-543b-4df5-a978-7c739bc24298" class="fauxinput description">list all bindings</p>
+		</div>
+		<p contenteditable="" id="note-878371dc-543b-4df5-a978-7c739bc24298" class="fauxinput note">None</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/878371dc-543b-4df5-a978-7c739bc24298'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/878371dc-543b-4df5-a978-7c739bc24298'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="55cd0896-abea-4c83-92ec-7c2db52cd405">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-55cd0896-abea-4c83-92ec-7c2db52cd405" class="fauxinput name">kill-buffer</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-55cd0896-abea-4c83-92ec-7c2db52cd405" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-55cd0896-abea-4c83-92ec-7c2db52cd405" class="fauxinput key">C-x k</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-55cd0896-abea-4c83-92ec-7c2db52cd405" class="fauxinput description">Kill buffer by name.&nbsp; Prompts for input.</p>
+		</div>
+		<p contenteditable="" id="note-55cd0896-abea-4c83-92ec-7c2db52cd405" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/55cd0896-abea-4c83-92ec-7c2db52cd405'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/55cd0896-abea-4c83-92ec-7c2db52cd405'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="8cb192b6-4917-42be-aa2e-3d19509a6df3">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-8cb192b6-4917-42be-aa2e-3d19509a6df3" class="fauxinput name">kill-sentence</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-8cb192b6-4917-42be-aa2e-3d19509a6df3" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-8cb192b6-4917-42be-aa2e-3d19509a6df3" class="fauxinput key">M-k</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-8cb192b6-4917-42be-aa2e-3d19509a6df3" class="fauxinput description">Kill from point to end of sentence.</p>
+		</div>
+		<p contenteditable="" id="note-8cb192b6-4917-42be-aa2e-3d19509a6df3" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/8cb192b6-4917-42be-aa2e-3d19509a6df3'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/8cb192b6-4917-42be-aa2e-3d19509a6df3'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="f8953633-089e-4559-9f0e-443cdb8fa074">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-f8953633-089e-4559-9f0e-443cdb8fa074" class="fauxinput name">regexp for minibuffer history</p>
+		  <input type="hidden">
+		  <div class="cheet-header-bind-container">
+		  <p contenteditable="" id="context-f8953633-089e-4559-9f0e-443cdb8fa074" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-f8953633-089e-4559-9f0e-443cdb8fa074" class="fauxinput key">M-r REGX &lt;RET&gt;</kbd>
+		  </div>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-f8953633-089e-4559-9f0e-443cdb8fa074" class="fauxinput description">Regex search through previous minibuffer history</p>
+		</div>
+		<p contenteditable="" id="note-f8953633-089e-4559-9f0e-443cdb8fa074" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/f8953633-089e-4559-9f0e-443cdb8fa074'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/f8953633-089e-4559-9f0e-443cdb8fa074'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="3b93655b-dfc0-4084-8d8b-bd27704187f0">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-3b93655b-dfc0-4084-8d8b-bd27704187f0" class="fauxinput name">goto next</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-3b93655b-dfc0-4084-8d8b-bd27704187f0" class="fauxinput context">vim</p>
+		  <kbd contenteditable="" id="key-3b93655b-dfc0-4084-8d8b-bd27704187f0" class="fauxinput key">*</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-3b93655b-dfc0-4084-8d8b-bd27704187f0" class="fauxinput description">Find the next example of word under cursor.</p>
+		</div>
+		<p contenteditable="" id="note-3b93655b-dfc0-4084-8d8b-bd27704187f0" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/3b93655b-dfc0-4084-8d8b-bd27704187f0'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/3b93655b-dfc0-4084-8d8b-bd27704187f0'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="68c738bd-9946-4c3d-be66-7c82a4bd7140">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-68c738bd-9946-4c3d-be66-7c82a4bd7140" class="fauxinput name">incsearch</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-68c738bd-9946-4c3d-be66-7c82a4bd7140" class="fauxinput context">vim</p>
+		  <kbd contenteditable="" id="key-68c738bd-9946-4c3d-be66-7c82a4bd7140" class="fauxinput key">-config-</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-68c738bd-9946-4c3d-be66-7c82a4bd7140" class="fauxinput description">If you set the incsearch option, Vim will show the first match for the pattern, while you are still typing it</p>
+		</div>
+		<p contenteditable="" id="note-68c738bd-9946-4c3d-be66-7c82a4bd7140" class="fauxinput note">
+
+
+		  Note
+
+
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/68c738bd-9946-4c3d-be66-7c82a4bd7140'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/68c738bd-9946-4c3d-be66-7c82a4bd7140'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="e3ef1d52-4ca2-4f73-8d00-20b4219be8b9">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-e3ef1d52-4ca2-4f73-8d00-20b4219be8b9" class="fauxinput name">jump-to-brace</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-e3ef1d52-4ca2-4f73-8d00-20b4219be8b9" class="fauxinput context">vim</p>
+		  <kbd contenteditable="" id="key-e3ef1d52-4ca2-4f73-8d00-20b4219be8b9" class="fauxinput key">%</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-e3ef1d52-4ca2-4f73-8d00-20b4219be8b9" class="fauxinput description">Jump to matching closing brace.</p>
+		</div>
+		<p contenteditable="" id="note-e3ef1d52-4ca2-4f73-8d00-20b4219be8b9" class="fauxinput note">
+
+
+		  Note
+
+
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/e3ef1d52-4ca2-4f73-8d00-20b4219be8b9'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/e3ef1d52-4ca2-4f73-8d00-20b4219be8b9'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="a42063ae-0574-4170-8266-f0b56906cf6f">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-a42063ae-0574-4170-8266-f0b56906cf6f" class="fauxinput name">adv. move</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-a42063ae-0574-4170-8266-f0b56906cf6f" class="fauxinput context">vim</p>
+		  <kbd contenteditable="" id="key-a42063ae-0574-4170-8266-f0b56906cf6f" class="fauxinput key">\[&nbsp;</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-a42063ae-0574-4170-8266-f0b56906cf6f" class="fauxinput description">Each triggers a command to go forwards `]` or backwards `[` by things like closing parens and marks.</p>
+		</div>
+		<p contenteditable="" id="note-a42063ae-0574-4170-8266-f0b56906cf6f" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/a42063ae-0574-4170-8266-f0b56906cf6f'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/a42063ae-0574-4170-8266-f0b56906cf6f'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="4f88ccff-477c-4937-91f4-0e447bcdf4c1">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-4f88ccff-477c-4937-91f4-0e447bcdf4c1" class="fauxinput name">jump-block</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-4f88ccff-477c-4937-91f4-0e447bcdf4c1" class="fauxinput context">vim</p>
+		  <kbd contenteditable="" id="key-4f88ccff-477c-4937-91f4-0e447bcdf4c1" class="fauxinput key">C-[ / ]</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-4f88ccff-477c-4937-91f4-0e447bcdf4c1" class="fauxinput description">Move &gt; or &lt;, by block.</p>
+		</div>
+		<p contenteditable="" id="note-4f88ccff-477c-4937-91f4-0e447bcdf4c1" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/4f88ccff-477c-4937-91f4-0e447bcdf4c1'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/4f88ccff-477c-4937-91f4-0e447bcdf4c1'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="9704fac2-d051-475a-9e74-3310652b13db">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-9704fac2-d051-475a-9e74-3310652b13db" class="fauxinput name">repeat-last-change</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-9704fac2-d051-475a-9e74-3310652b13db" class="fauxinput context">vim</p>
+		  <kbd contenteditable="" id="key-9704fac2-d051-475a-9e74-3310652b13db" class="fauxinput key">.</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-9704fac2-d051-475a-9e74-3310652b13db" class="fauxinput description">Repeat last command (like change-word)</p>
+		</div>
+		<p contenteditable="" id="note-9704fac2-d051-475a-9e74-3310652b13db" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/9704fac2-d051-475a-9e74-3310652b13db'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/9704fac2-d051-475a-9e74-3310652b13db'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4" class="fauxinput name">record-macro</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4" class="fauxinput context">vim</p>
+		  <kbd contenteditable="" id="key-f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4" class="fauxinput key">q &lt;register&gt;</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4" class="fauxinput description">Start recording into &lt;register&gt;</p>
+		</div>
+		<p contenteditable="" id="note-f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="48afbce6-2d2f-4720-966f-04013075dc67">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-48afbce6-2d2f-4720-966f-04013075dc67" class="fauxinput name">play-macro</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-48afbce6-2d2f-4720-966f-04013075dc67" class="fauxinput context">vim</p>
+		  <kbd contenteditable="" id="key-48afbce6-2d2f-4720-966f-04013075dc67" class="fauxinput key">@ &lt;register&gt;</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-48afbce6-2d2f-4720-966f-04013075dc67" class="fauxinput description">Playback macro at &lt;register&gt;</p>
+		</div>
+		<p contenteditable="" id="note-48afbce6-2d2f-4720-966f-04013075dc67" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/48afbce6-2d2f-4720-966f-04013075dc67'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/48afbce6-2d2f-4720-966f-04013075dc67'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="dd106cf5-e702-45d7-a11c-72e99b1affb5">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-dd106cf5-e702-45d7-a11c-72e99b1affb5" class="fauxinput name">grep-files</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-dd106cf5-e702-45d7-a11c-72e99b1affb5" class="fauxinput context">vim</p>
+		  <kbd contenteditable="" id="key-dd106cf5-e702-45d7-a11c-72e99b1affb5" class="fauxinput key">:grep</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-dd106cf5-e702-45d7-a11c-72e99b1affb5" class="fauxinput description">description goes here</p>
+		</div>
+		<p contenteditable="" id="note-dd106cf5-e702-45d7-a11c-72e99b1affb5" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/dd106cf5-e702-45d7-a11c-72e99b1affb5'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/dd106cf5-e702-45d7-a11c-72e99b1affb5'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="3ff2f4d0-4243-4272-977d-2356fcd1cfe4">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-3ff2f4d0-4243-4272-977d-2356fcd1cfe4" class="fauxinput name">indent-region</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-3ff2f4d0-4243-4272-977d-2356fcd1cfe4" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-3ff2f4d0-4243-4272-977d-2356fcd1cfe4" class="fauxinput key">C-M-\</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-3ff2f4d0-4243-4272-977d-2356fcd1cfe4" class="fauxinput description">Indent the region</p>
+		</div>
+		<p contenteditable="" id="note-3ff2f4d0-4243-4272-977d-2356fcd1cfe4" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/3ff2f4d0-4243-4272-977d-2356fcd1cfe4'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/3ff2f4d0-4243-4272-977d-2356fcd1cfe4'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="e0c3224e-dfd2-4e3c-8abb-592a51899f25">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-e0c3224e-dfd2-4e3c-8abb-592a51899f25" class="fauxinput name">evil-window-prefix</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-e0c3224e-dfd2-4e3c-8abb-592a51899f25" class="fauxinput context">evil</p>
+		  <kbd contenteditable="" id="key-e0c3224e-dfd2-4e3c-8abb-592a51899f25" class="fauxinput key">C-w</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-e0c3224e-dfd2-4e3c-8abb-592a51899f25" class="fauxinput description">Prefix for a bunch of window-based commands, like rotation, balancing, moving, focusing, splitting, etc.</p>
+		</div>
+		<p contenteditable="" id="note-e0c3224e-dfd2-4e3c-8abb-592a51899f25" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/e0c3224e-dfd2-4e3c-8abb-592a51899f25'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/e0c3224e-dfd2-4e3c-8abb-592a51899f25'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="5c84867d-5497-44e3-a97c-c6b5d81febde">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-5c84867d-5497-44e3-a97c-c6b5d81febde" class="fauxinput name">undo-tree-visualize</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-5c84867d-5497-44e3-a97c-c6b5d81febde" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-5c84867d-5497-44e3-a97c-c6b5d81febde" class="fauxinput key">C-x u</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-5c84867d-5497-44e3-a97c-c6b5d81febde" class="fauxinput description">open a traversible tree of undo information</p>
+		</div>
+		<p contenteditable="" id="note-5c84867d-5497-44e3-a97c-c6b5d81febde" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/5c84867d-5497-44e3-a97c-c6b5d81febde'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/5c84867d-5497-44e3-a97c-c6b5d81febde'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="cf803395-9111-4aa0-9df2-a8fb3b9b93fe">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-cf803395-9111-4aa0-9df2-a8fb3b9b93fe" class="fauxinput name">next-error</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-cf803395-9111-4aa0-9df2-a8fb3b9b93fe" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-cf803395-9111-4aa0-9df2-a8fb3b9b93fe" class="fauxinput key">C-x `</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-cf803395-9111-4aa0-9df2-a8fb3b9b93fe" class="fauxinput description">go to next error.</p>
+		</div>
+		<p contenteditable="" id="note-cf803395-9111-4aa0-9df2-a8fb3b9b93fe" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/cf803395-9111-4aa0-9df2-a8fb3b9b93fe'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/cf803395-9111-4aa0-9df2-a8fb3b9b93fe'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="1cbd6d03-b0e2-43ee-97c9-2c4df5750f40">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-1cbd6d03-b0e2-43ee-97c9-2c4df5750f40" class="fauxinput name">helm-prefix</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-1cbd6d03-b0e2-43ee-97c9-2c4df5750f40" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-1cbd6d03-b0e2-43ee-97c9-2c4df5750f40" class="fauxinput key">C-x c</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-1cbd6d03-b0e2-43ee-97c9-2c4df5750f40" class="fauxinput description">Activate&nbsp; any of a series of super handy helm commands</p>
+		</div>
+		<p contenteditable="" id="note-1cbd6d03-b0e2-43ee-97c9-2c4df5750f40" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/1cbd6d03-b0e2-43ee-97c9-2c4df5750f40'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/1cbd6d03-b0e2-43ee-97c9-2c4df5750f40'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="1e492330-ab3b-4757-b986-ac8354e01ffb">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-1e492330-ab3b-4757-b986-ac8354e01ffb" class="fauxinput name">set mark</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-1e492330-ab3b-4757-b986-ac8354e01ffb" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-1e492330-ab3b-4757-b986-ac8354e01ffb" class="fauxinput key">C-SPC</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-1e492330-ab3b-4757-b986-ac8354e01ffb" class="fauxinput description">Sets the mark.&nbsp; See documentation on set-mark for more info</p>
+		</div>
+		<p contenteditable="" id="note-1e492330-ab3b-4757-b986-ac8354e01ffb" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/1e492330-ab3b-4757-b986-ac8354e01ffb'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/1e492330-ab3b-4757-b986-ac8354e01ffb'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="634db578-8a29-4500-aac4-cdb96a62b629">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-634db578-8a29-4500-aac4-cdb96a62b629" class="fauxinput name">vc-preix</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-634db578-8a29-4500-aac4-cdb96a62b629" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-634db578-8a29-4500-aac4-cdb96a62b629" class="fauxinput key">C-x v</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-634db578-8a29-4500-aac4-cdb96a62b629" class="fauxinput description">Use any of a number of version control commands, like diff, push, pull, etc</p>
+		</div>
+		<p contenteditable="" id="note-634db578-8a29-4500-aac4-cdb96a62b629" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/634db578-8a29-4500-aac4-cdb96a62b629'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/634db578-8a29-4500-aac4-cdb96a62b629'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="94809cf5-3b30-4502-91f0-39dc23bd47d3">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-94809cf5-3b30-4502-91f0-39dc23bd47d3" class="fauxinput name">xref-find-definitions</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-94809cf5-3b30-4502-91f0-39dc23bd47d3" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-94809cf5-3b30-4502-91f0-39dc23bd47d3" class="fauxinput key">M-.</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-94809cf5-3b30-4502-91f0-39dc23bd47d3" class="fauxinput description">Find where <thing under="" point="">thing-under-point is defined.&nbsp; Use liberally.</thing></p>
+		</div>
+		<p contenteditable="" id="note-94809cf5-3b30-4502-91f0-39dc23bd47d3" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/94809cf5-3b30-4502-91f0-39dc23bd47d3'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/94809cf5-3b30-4502-91f0-39dc23bd47d3'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="71f4406f-aeb7-4cd8-aa8a-1d6689953467">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-71f4406f-aeb7-4cd8-aa8a-1d6689953467" class="fauxinput name">xref-find-references</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-71f4406f-aeb7-4cd8-aa8a-1d6689953467" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-71f4406f-aeb7-4cd8-aa8a-1d6689953467" class="fauxinput key">M-?</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-71f4406f-aeb7-4cd8-aa8a-1d6689953467" class="fauxinput description">Powerful tool that finds references of thing-under-point<thing under="" point=""></thing></p>
+		</div>
+		<p contenteditable="" id="note-71f4406f-aeb7-4cd8-aa8a-1d6689953467" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/71f4406f-aeb7-4cd8-aa8a-1d6689953467'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/71f4406f-aeb7-4cd8-aa8a-1d6689953467'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="541e7085-3c35-4fbe-92db-3232538e61cc">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-541e7085-3c35-4fbe-92db-3232538e61cc" class="fauxinput name">execute extended command for buffer</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-541e7085-3c35-4fbe-92db-3232538e61cc" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-541e7085-3c35-4fbe-92db-3232538e61cc" class="fauxinput key">M-X</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-541e7085-3c35-4fbe-92db-3232538e61cc" class="fauxinput description">Execute a command, but limit the autofill to commands relevant to the current buffer.</p>
+		</div>
+		<p contenteditable="" id="note-541e7085-3c35-4fbe-92db-3232538e61cc" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/541e7085-3c35-4fbe-92db-3232538e61cc'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/541e7085-3c35-4fbe-92db-3232538e61cc'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="0fe2286a-3ea6-47b1-b76a-f77336a958be">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-0fe2286a-3ea6-47b1-b76a-f77336a958be" class="fauxinput name">backwards sentence / forwards sentence</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-0fe2286a-3ea6-47b1-b76a-f77336a958be" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-0fe2286a-3ea6-47b1-b76a-f77336a958be" class="fauxinput key">M-a / M-e</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-0fe2286a-3ea6-47b1-b76a-f77336a958be" class="fauxinput description">Move by 'sentence' - which can mean different things depending on the context.</p>
+		</div>
+		<p contenteditable="" id="note-0fe2286a-3ea6-47b1-b76a-f77336a958be" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/0fe2286a-3ea6-47b1-b76a-f77336a958be'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/0fe2286a-3ea6-47b1-b76a-f77336a958be'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="d4d47ddb-e041-4ff0-8be5-82738fb4e2dd">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-d4d47ddb-e041-4ff0-8be5-82738fb4e2dd" class="fauxinput name">move paragraph</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-d4d47ddb-e041-4ff0-8be5-82738fb4e2dd" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-d4d47ddb-e041-4ff0-8be5-82738fb4e2dd" class="fauxinput key">M-{ / M-}</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-d4d47ddb-e041-4ff0-8be5-82738fb4e2dd" class="fauxinput description">move forwards or backwards by paragraph</p>
+		</div>
+		<p contenteditable="" id="note-d4d47ddb-e041-4ff0-8be5-82738fb4e2dd" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/d4d47ddb-e041-4ff0-8be5-82738fb4e2dd'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/d4d47ddb-e041-4ff0-8be5-82738fb4e2dd'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="1acee4be-45d3-4c27-abf9-a5380e745eb0">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-1acee4be-45d3-4c27-abf9-a5380e745eb0" class="fauxinput name">shell-command-on-region</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-1acee4be-45d3-4c27-abf9-a5380e745eb0" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-1acee4be-45d3-4c27-abf9-a5380e745eb0" class="fauxinput key">M-|</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-1acee4be-45d3-4c27-abf9-a5380e745eb0" class="fauxinput description">Execute a shell command on region</p>
+		</div>
+		<p contenteditable="" id="note-1acee4be-45d3-4c27-abf9-a5380e745eb0" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/1acee4be-45d3-4c27-abf9-a5380e745eb0'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/1acee4be-45d3-4c27-abf9-a5380e745eb0'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="6e35e576-3730-4d4e-8f6d-651525b28448">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-6e35e576-3730-4d4e-8f6d-651525b28448" class="fauxinput name">xref-apropos</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-6e35e576-3730-4d4e-8f6d-651525b28448" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-6e35e576-3730-4d4e-8f6d-651525b28448" class="fauxinput key">C-M-.</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-6e35e576-3730-4d4e-8f6d-651525b28448" class="fauxinput description">Find everything that looks like thing-under-point</p>
+		</div>
+		<p contenteditable="" id="note-6e35e576-3730-4d4e-8f6d-651525b28448" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/6e35e576-3730-4d4e-8f6d-651525b28448'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/6e35e576-3730-4d4e-8f6d-651525b28448'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="23db43a0-f2b8-47e8-a77a-dd44550b481f">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-23db43a0-f2b8-47e8-a77a-dd44550b481f" class="fauxinput name">narrowing prefix</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-23db43a0-f2b8-47e8-a77a-dd44550b481f" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-23db43a0-f2b8-47e8-a77a-dd44550b481f" class="fauxinput key">C-x n</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-23db43a0-f2b8-47e8-a77a-dd44550b481f" class="fauxinput description">provides a set of 'narrows' that hide everything but something</p>
+		</div>
+		<p contenteditable="" id="note-23db43a0-f2b8-47e8-a77a-dd44550b481f" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/23db43a0-f2b8-47e8-a77a-dd44550b481f'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/23db43a0-f2b8-47e8-a77a-dd44550b481f'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3" class="fauxinput name">eww-search-words</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3" class="fauxinput key">M-s M-w</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3" class="fauxinput description">Search the web for thing in <region> and open a buffer with ddg results</region></p>
+		</div>
+		<p contenteditable="" id="note-1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3" class="fauxinput note">Does not work with evil-region, unfortunately.</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="ed0a526c-dbab-41ee-8a86-d107edef28fd">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-ed0a526c-dbab-41ee-8a86-d107edef28fd" class="fauxinput name">set selective-display</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-ed0a526c-dbab-41ee-8a86-d107edef28fd" class="fauxinput context">emacs</p>
+		  <kbd contenteditable="" id="key-ed0a526c-dbab-41ee-8a86-d107edef28fd" class="fauxinput key"><num>C-x $</num></kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-ed0a526c-dbab-41ee-8a86-d107edef28fd" class="fauxinput description">sets selective display to <num>, collapsing everything with a lesser indent</num></p>
+		</div>
+		<p contenteditable="" id="note-ed0a526c-dbab-41ee-8a86-d107edef28fd" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/ed0a526c-dbab-41ee-8a86-d107edef28fd'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/ed0a526c-dbab-41ee-8a86-d107edef28fd'">vim!</button>
+	    </form>
+
+	    <form method="POST" action="/update">
+	      <input type="hidden" class="id" id="id" name="id" value="7db54669-94dd-43d4-95e9-add0384668ff">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-7db54669-94dd-43d4-95e9-add0384668ff" class="fauxinput name">screenshot</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-7db54669-94dd-43d4-95e9-add0384668ff" class="fauxinput context">macos</p>
+		  <kbd contenteditable="" id="key-7db54669-94dd-43d4-95e9-add0384668ff" class="fauxinput key">SHIFT-APPLE-3</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-7db54669-94dd-43d4-95e9-add0384668ff" class="fauxinput description">Take a screenshot.&nbsp; Use SHIFT-APPLE-4 for a partial.&nbsp; You will need to use the mouse.</p>
+		</div>
+		<p contenteditable="" id="note-7db54669-94dd-43d4-95e9-add0384668ff" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+
+		</ul>
+	      </div>
+	      <input type="submit" value="update">
+	      <button type="button" onclick="location.href='/delete/7db54669-94dd-43d4-95e9-add0384668ff'">delete</button>
+	      <button type="button" onclick="location.href='/vimedit/7db54669-94dd-43d4-95e9-add0384668ff'">vim!</button>
+	    </form>
+
+
+	    <form method="POST" action="/create">
+	      <div class="cheet-container">
+		<div class="cheet-header-container">
+		  <p contenteditable="" id="title-new" class="fauxinput name">new cheet</p>
+		  <input type="hidden">
+		  <p contenteditable="" id="context-new" class="fauxinput context">context</p>
+		  <kbd contenteditable="" id="key-new" class="fauxinput key">key</kbd>
+		</div>
+		<div class="cheet-desc-container">
+		  <p contenteditable="" id="desc-new" class="fauxinput description">description goes here</p>
+		</div>
+		<p contenteditable="" id="note-new" class="fauxinput note">
+		  Note
+		</p>
+		<ul class="cheet-tag-list">
+		  <lh class="cheet-tag-list-header">Tags:</lh>
+		  <li>TODO</li>
+		  <li>tags</li>
+		</ul>
+	      </div>
+	      <input type="submit" value="create">
+
+	      <button type="button" onclick="location.href='/vimedit/newcheet'">vim!</button>
+	    </form>
+
+      <script src="/static/formsender.js"></script>
+
+	</div>
+
+</body></html>

@@ -15,7 +15,7 @@ class CheetSchema(Schema):
     context = fields.Str()
     description = fields.Str()
     note = fields.Str(allow_none=True)
-    tags = fields.List(fields.Str(), allow_none=True)
+    tags = fields.List(fields.Str(load_default="newtag", dump_default="newtag"), dump_default=["newtag"], load_default=["newtag"])
 
     @post_load
     def make_cheet(self, data, **kwargs):
@@ -68,7 +68,7 @@ class Cheet:
                  context,
                  description,
                  note = None,
-                 tags = None,
+                 tags = [],
                  id = None):
         self.name = name
         self.key = key

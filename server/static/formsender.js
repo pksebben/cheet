@@ -29,6 +29,7 @@ function addDataToSend(event) {
     console.log(parent)
 
     inputs = form.getElementsByClassName("fauxinput")
+    tags = form.getElementsByClassName("tag")
     for (let i = 0; i < inputs.length; i++) {
 	let input = inputs[i];
 	classname = input.className

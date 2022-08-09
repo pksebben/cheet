@@ -58,6 +58,19 @@ def delete(id):
     db.delete(id)
     return redirect('/')
 
+@api.route('/addtag/<id>')
+def addtag(id):
+    cheet = db.get(id)
+    cheet.tags.append('newtag')
+    return redirect('/')
+
+@api.route('/remtag/<id>/<tag>')
+def remtag(id, tag):
+    cheet = db.get(id)
+    cheet.tags = cheet.tags.remove(tag)
+    db.update(cheet)
+    return redirect('/')
+
 @api.route('/vimedit/<id>', methods=['GET'])
 def vimedit(id):
     """open vim in the server process to edit a cheet by id"""
