@@ -8,6 +8,17 @@ from marshmallow.exceptions import ValidationError
 # import cheet_compile
 import random
 
+class DefaultList(fields.List):
+    def _deserialize(self, value, attr, data, **kwargs):
+        value = value or []
+        print(f"deserializing : {value}")
+        return super()._deserialize(value, attr, data, **kwargs)
+
+    def _serialize(self, value, attr, obj, **kwargs):
+        value = value or []
+        print(f"serializing : {value}")
+        return super()._serialize(value, attr, obj, **kwargs)
+
 class CheetSchema(Schema):
     name = fields.Str()
     id = fields.Str(default=str(uuid4()))
@@ -15,7 +26,7 @@ class CheetSchema(Schema):
     context = fields.Str()
     description = fields.Str()
     note = fields.Str(allow_none=True)
-    tags = fields.List(fields.Str(load_default="newtag", dump_default="newtag"), dump_default=["newtag"], load_default=["newtag"])
+    tags = DefaultList(fields.Str(), allow_none=True)
 
     @post_load
     def make_cheet(self, data, **kwargs):
@@ -37,29 +48,26 @@ class Cheet:
             with open(path, "r") as f:
                 return self.schema.loads(f.read(), many=True)
         except ValidationError as e:
-            cheet = Cheet('error',
-                          'N/A',
-                          'err',
-                          f'There was a validation error loading {path}')
-            print(f"Validation error for {path}: {e}")
-            return [cheet]
+            raise ValidationError(f"Validation error for {path}: {e}")
 
     @classmethod
     def from_dict(self, cdict):
-        required = ['name', 'key', 'context', 'description']
-        for k in required:
-            if k not in cdict.keys():
-                raise ValidationError(f"missing key: {k}")
+        print(cdict)
+        cheet = self.schema.load(cdict)
+        # required = ['name', 'key', 'context', 'description']
+        # for k in required:
+        #     if k not in cdict.keys():
+        #         raise ValidationError(f"missing key: {k}")
 
-        cheet = Cheet(
-            cdict.get('name'),
-            cdict.get('key'),
-            cdict.get('context'),
-            cdict.get('description'),
-            cdict.get('note'),
-            cdict.get('tags'),
-            cdict.get('id')
-        )
+        # cheet = Cheet(
+        #     cdict.get('name'),
+        #     cdict.get('key'),
+        #     cdict.get('context'),
+        #     cdict.get('description'),
+        #     cdict.get('note'),
+        #     cdict.get('tags') or [],
+        #     cdict.get('id')
+        # )
         return cheet
 
     def __init__(self,
@@ -75,12 +83,25 @@ class Cheet:
         self.context = context
         self.description = description
         self.note = note
-        self.tags = tags
+        if tags is not None:
+            self.tags = tags
+        else:
+            self.tags = []
         if id is not None:
             self.id = id
         else:
             self.id = str(uuid4())
 
+    def __eq__(self, other):
+        return all([
+            self.name == other.name,
+            self.key == other.key,
+            self.context == other.context,
+            self.description == other.description,
+            self.note == other.note,
+            self.tags == other.tags,
+            self.id == other.id
+        ])
 
     def vim_edit(self):
         """edit this cheet using a vim subprocess"""
