@@ -1,1 +1,363 @@
-[{"note": "\r\n\t\t  \r\n\t\t    No notes.\r\n\t\t  \r\n\t\t", "context": "emacs", "description": "Pops into a minibuffer for evaluating expressions.&nbsp; Useful for navigating emacs' twisty elisp stuffs.", "id": "b89591aa-09a7-4f37-9a94-6b9d9710fe08", "name": "eval-minibuffer", "key": "M-:", "tags": ["new tag"]}, {"note": null, "context": "emacs", "description": "list all bindings", "id": "878371dc-543b-4df5-a978-7c739bc24298", "name": "descbinds", "key": "C-h b", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Kill buffer by name.&nbsp; Prompts for input.", "id": "55cd0896-abea-4c83-92ec-7c2db52cd405", "name": "kill-buffer", "key": "C-x k", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Kill from point to end of sentence.", "id": "8cb192b6-4917-42be-aa2e-3d19509a6df3", "name": "kill-sentence", "key": "M-k", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Regex search through previous minibuffer history", "id": "f8953633-089e-4559-9f0e-443cdb8fa074", "name": "regexp for minibuffer history", "key": "M-r REGX &lt;RET&gt;", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "vim", "description": "Find the next example of word under cursor.", "id": "3b93655b-dfc0-4084-8d8b-bd27704187f0", "name": "goto next", "key": "*", "tags": ["new tag"]}, {"note": "\r\n\t\t  \r\n\t\t    \r\n\t\t  Note\r\n\t\t\r\n\t\t  \r\n\t\t", "context": "vim", "description": "If you set the incsearch option, Vim will show the first match for the pattern, while you are still typing it", "id": "68c738bd-9946-4c3d-be66-7c82a4bd7140", "name": "incsearch", "key": "-config-", "tags": ["new tag"]}, {"note": "\r\n\t\t  \r\n\t\t    \r\n\t\t  Note\r\n\t\t\r\n\t\t  \r\n\t\t", "context": "vim", "description": "Jump to matching closing brace.", "id": "e3ef1d52-4ca2-4f73-8d00-20b4219be8b9", "name": "jump-to-brace", "key": "%", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "vim", "description": "Each triggers a command to go forwards `]` or backwards `[` by things like closing parens and marks.", "id": "a42063ae-0574-4170-8266-f0b56906cf6f", "name": "adv. move", "key": "\\[&nbsp;", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "vim", "description": "Move &gt; or &lt;, by block.", "id": "4f88ccff-477c-4937-91f4-0e447bcdf4c1", "name": "jump-block", "key": "C-[ / ]", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "vim", "description": "Repeat last command (like change-word)", "id": "9704fac2-d051-475a-9e74-3310652b13db", "name": "repeat-last-change", "key": ".", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "vim", "description": "Start recording into &lt;register&gt;", "id": "f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4", "name": "record-macro", "key": "q &lt;register&gt;", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "vim", "description": "Playback macro at &lt;register&gt;", "id": "48afbce6-2d2f-4720-966f-04013075dc67", "name": "play-macro", "key": "@ &lt;register&gt;", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "vim", "description": "description goes here", "id": "dd106cf5-e702-45d7-a11c-72e99b1affb5", "name": "grep-files", "key": ":grep", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Indent the region", "id": "3ff2f4d0-4243-4272-977d-2356fcd1cfe4", "name": "indent-region", "key": "C-M-\\", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "evil", "description": "Prefix for a bunch of window-based commands, like rotation, balancing, moving, focusing, splitting, etc.", "id": "e0c3224e-dfd2-4e3c-8abb-592a51899f25", "name": "evil-window-prefix", "key": "C-w", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "open a traversible tree of undo information", "id": "5c84867d-5497-44e3-a97c-c6b5d81febde", "name": "undo-tree-visualize", "key": "C-x u", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "go to next error.", "id": "cf803395-9111-4aa0-9df2-a8fb3b9b93fe", "name": "next-error", "key": "C-x `", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Activate\u00a0 any of a series of super handy helm commands", "id": "1cbd6d03-b0e2-43ee-97c9-2c4df5750f40", "name": "helm-prefix", "key": "C-x c", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Sets the mark.\u00a0 See documentation on set-mark for more info", "id": "1e492330-ab3b-4757-b986-ac8354e01ffb", "name": "set mark", "key": "C-SPC", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Use any of a number of version control commands, like diff, push, pull, etc", "id": "634db578-8a29-4500-aac4-cdb96a62b629", "name": "vc-preix", "key": "C-x v", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Find where <thing under=\"\" point=\"\">thing-under-point is defined.\u00a0 Use liberally.</thing>", "id": "94809cf5-3b30-4502-91f0-39dc23bd47d3", "name": "xref-find-definitions", "key": "M-.", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Powerful tool that finds references of thing-under-point<thing under=\"\" point=\"\"></thing>", "id": "71f4406f-aeb7-4cd8-aa8a-1d6689953467", "name": "xref-find-references", "key": "M-?", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Execute a command, but limit the autofill to commands relevant to the current buffer.", "id": "541e7085-3c35-4fbe-92db-3232538e61cc", "name": "execute extended command for buffer", "key": "M-X", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Move by 'sentence' - which can mean different things depending on the context.", "id": "0fe2286a-3ea6-47b1-b76a-f77336a958be", "name": "backwards sentence / forwards sentence", "key": "M-a / M-e", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "move forwards or backwards by paragraph", "id": "d4d47ddb-e041-4ff0-8be5-82738fb4e2dd", "name": "move paragraph", "key": "M-{ / M-}", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Execute a shell command on region", "id": "1acee4be-45d3-4c27-abf9-a5380e745eb0", "name": "shell-command-on-region", "key": "M-|", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "Find everything that looks like thing-under-point", "id": "6e35e576-3730-4d4e-8f6d-651525b28448", "name": "xref-apropos", "key": "C-M-.", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "provides a set of 'narrows' that hide everything but something", "id": "23db43a0-f2b8-47e8-a77a-dd44550b481f", "name": "narrowing prefix", "key": "C-x n", "tags": ["new tag"]}, {"note": "Does not work with evil-region, unfortunately.", "context": "emacs", "description": "Search the web for thing in <region> and open a buffer with ddg results</region>", "id": "1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3", "name": "eww-search-words", "key": "M-s M-w", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "emacs", "description": "sets selective display to <num>, collapsing everything with a lesser indent</num>", "id": "ed0a526c-dbab-41ee-8a86-d107edef28fd", "name": "set selective-display", "key": "<num>C-x $</num>", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "macos", "description": "Take a screenshot.\u00a0 Use SHIFT-APPLE-4 for a partial.\u00a0 You will need to use the mouse.", "id": "7db54669-94dd-43d4-95e9-add0384668ff", "name": "screenshot", "key": "SHIFT-APPLE-3", "tags": ["new tag"]}, {"note": "\r\n\t\t  Note\r\n\t\t", "context": "context", "description": "description goes here", "id": "1be31faa-aa94-4551-8c60-352f2192b44a", "name": "new cheet", "key": "key", "tags": []}, {"id": "9d0a2c6f-2d92-4997-93f0-bdcd74c0d0ba"}]
+[
+  {
+    "note": "\r\n\t\t  \r\n\t\t    No notes.\r\n\t\t  \r\n\t\t",
+    "context": "emacs",
+    "description": "Pops into a minibuffer for evaluating expressions.&nbsp; Useful for navigating emacs' twisty elisp stuffs.",
+    "id": "b89591aa-09a7-4f37-9a94-6b9d9710fe08",
+    "name": "eval-minibuffer",
+    "key": "M-:",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": null,
+    "context": "emacs",
+    "description": "list all bindings",
+    "id": "878371dc-543b-4df5-a978-7c739bc24298",
+    "name": "descbinds",
+    "key": "C-h b",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Kill buffer by name.&nbsp; Prompts for input.",
+    "id": "55cd0896-abea-4c83-92ec-7c2db52cd405",
+    "name": "kill-buffer",
+    "key": "C-x k",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Kill from point to end of sentence.",
+    "id": "8cb192b6-4917-42be-aa2e-3d19509a6df3",
+    "name": "kill-sentence",
+    "key": "M-k",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Regex search through previous minibuffer history",
+    "id": "f8953633-089e-4559-9f0e-443cdb8fa074",
+    "name": "regexp for minibuffer history",
+    "key": "M-r REGX &lt;RET&gt;",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "vim",
+    "description": "Find the next example of word under cursor.",
+    "id": "3b93655b-dfc0-4084-8d8b-bd27704187f0",
+    "name": "goto next",
+    "key": "*",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  \r\n\t\t    \r\n\t\t  Note\r\n\t\t\r\n\t\t  \r\n\t\t",
+    "context": "vim",
+    "description": "If you set the incsearch option, Vim will show the first match for the pattern, while you are still typing it",
+    "id": "68c738bd-9946-4c3d-be66-7c82a4bd7140",
+    "name": "incsearch",
+    "key": "-config-",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  \r\n\t\t    \r\n\t\t  Note\r\n\t\t\r\n\t\t  \r\n\t\t",
+    "context": "vim",
+    "description": "Jump to matching closing brace.",
+    "id": "e3ef1d52-4ca2-4f73-8d00-20b4219be8b9",
+    "name": "jump-to-brace",
+    "key": "%",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "vim",
+    "description": "Each triggers a command to go forwards `]` or backwards `[` by things like closing parens and marks.",
+    "id": "a42063ae-0574-4170-8266-f0b56906cf6f",
+    "name": "adv. move",
+    "key": "\\[&nbsp;",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "vim",
+    "description": "Move &gt; or &lt;, by block.",
+    "id": "4f88ccff-477c-4937-91f4-0e447bcdf4c1",
+    "name": "jump-block",
+    "key": "C-[ / ]",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "vim",
+    "description": "Repeat last command (like change-word)",
+    "id": "9704fac2-d051-475a-9e74-3310652b13db",
+    "name": "repeat-last-change",
+    "key": ".",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "vim",
+    "description": "Start recording into &lt;register&gt;",
+    "id": "f94a21d3-d4f8-49f1-bc1f-ca4c5213ebc4",
+    "name": "record-macro",
+    "key": "q &lt;register&gt;",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "vim",
+    "description": "Playback macro at &lt;register&gt;",
+    "id": "48afbce6-2d2f-4720-966f-04013075dc67",
+    "name": "play-macro",
+    "key": "@ &lt;register&gt;",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "vim",
+    "description": "description goes here",
+    "id": "dd106cf5-e702-45d7-a11c-72e99b1affb5",
+    "name": "grep-files",
+    "key": ":grep",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Indent the region",
+    "id": "3ff2f4d0-4243-4272-977d-2356fcd1cfe4",
+    "name": "indent-region",
+    "key": "C-M-\\",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "evil",
+    "description": "Prefix for a bunch of window-based commands, like rotation, balancing, moving, focusing, splitting, etc.",
+    "id": "e0c3224e-dfd2-4e3c-8abb-592a51899f25",
+    "name": "evil-window-prefix",
+    "key": "C-w",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "open a traversible tree of undo information",
+    "id": "5c84867d-5497-44e3-a97c-c6b5d81febde",
+    "name": "undo-tree-visualize",
+    "key": "C-x u",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "go to next error.",
+    "id": "cf803395-9111-4aa0-9df2-a8fb3b9b93fe",
+    "name": "next-error",
+    "key": "C-x `",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Activate  any of a series of super handy helm commands",
+    "id": "1cbd6d03-b0e2-43ee-97c9-2c4df5750f40",
+    "name": "helm-prefix",
+    "key": "C-x c",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Sets the mark.  See documentation on set-mark for more info",
+    "id": "1e492330-ab3b-4757-b986-ac8354e01ffb",
+    "name": "set mark",
+    "key": "C-SPC",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Use any of a number of version control commands, like diff, push, pull, etc",
+    "id": "634db578-8a29-4500-aac4-cdb96a62b629",
+    "name": "vc-preix",
+    "key": "C-x v",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Find where <thing under=\"\" point=\"\">thing-under-point is defined.  Use liberally.</thing>",
+    "id": "94809cf5-3b30-4502-91f0-39dc23bd47d3",
+    "name": "xref-find-definitions",
+    "key": "M-.",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Powerful tool that finds references of thing-under-point<thing under=\"\" point=\"\"></thing>",
+    "id": "71f4406f-aeb7-4cd8-aa8a-1d6689953467",
+    "name": "xref-find-references",
+    "key": "M-?",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Execute a command, but limit the autofill to commands relevant to the current buffer.",
+    "id": "541e7085-3c35-4fbe-92db-3232538e61cc",
+    "name": "execute extended command for buffer",
+    "key": "M-X",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Move by 'sentence' - which can mean different things depending on the context.",
+    "id": "0fe2286a-3ea6-47b1-b76a-f77336a958be",
+    "name": "backwards sentence / forwards sentence",
+    "key": "M-a / M-e",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "move forwards or backwards by paragraph",
+    "id": "d4d47ddb-e041-4ff0-8be5-82738fb4e2dd",
+    "name": "move paragraph",
+    "key": "M-{ / M-}",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Execute a shell command on region",
+    "id": "1acee4be-45d3-4c27-abf9-a5380e745eb0",
+    "name": "shell-command-on-region",
+    "key": "M-|",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "Find everything that looks like thing-under-point",
+    "id": "6e35e576-3730-4d4e-8f6d-651525b28448",
+    "name": "xref-apropos",
+    "key": "C-M-.",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "provides a set of 'narrows' that hide everything but something",
+    "id": "23db43a0-f2b8-47e8-a77a-dd44550b481f",
+    "name": "narrowing prefix",
+    "key": "C-x n",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "Does not work with evil-region, unfortunately.",
+    "context": "emacs",
+    "description": "Search the web for thing in <region> and open a buffer with ddg results</region>",
+    "id": "1b3f51b6-e8a3-43cc-985e-ed9ce7b752e3",
+    "name": "eww-search-words",
+    "key": "M-s M-w",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "emacs",
+    "description": "sets selective display to <num>, collapsing everything with a lesser indent</num>",
+    "id": "ed0a526c-dbab-41ee-8a86-d107edef28fd",
+    "name": "set selective-display",
+    "key": "<num>C-x $</num>",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "macos",
+    "description": "Take a screenshot.  Use SHIFT-APPLE-4 for a partial.  You will need to use the mouse.",
+    "id": "7db54669-94dd-43d4-95e9-add0384668ff",
+    "name": "screenshot",
+    "key": "SHIFT-APPLE-3",
+    "tags": [
+      "new tag"
+    ]
+  },
+  {
+    "note": "\r\n\t\t  Note\r\n\t\t",
+    "context": "context",
+    "description": "description goes here",
+    "id": "1be31faa-aa94-4551-8c60-352f2192b44a",
+    "name": "new cheet",
+    "key": "key",
+    "tags": []
+  },
+]
