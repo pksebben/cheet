@@ -358,6 +358,8 @@
     "id": "1be31faa-aa94-4551-8c60-352f2192b44a",
     "name": "new cheet",
     "key": "key",
-    "tags": []
-  },
+      "tags": [
+	  "new tag"
+    ]
+  }
 ]
