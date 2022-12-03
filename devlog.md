@@ -11,13 +11,19 @@ reimplement a cli and compiling / desktop rendering at some point.
 
 # LOG
 
-## Saturday, July 16, 2022
+## Thursday, September 29, 2022
 
+I need sql.  Implementing this is going to be quite a task, so I
+should break it up into smaller TODOs.
 
+===============
 BOOKMARK: ,./
+===============
 
 # TODO
 
-[ ] polish on the vim editor
-	[ ] fields should render in the same order all the time
-	[ ]
+ - [ ] SQL
+   - [ ] Connection to sql db
+   - [ ] models for sqlalchemy
+   - [ ] translation from json => sql db
+   - [ ] rework api to use sql
